@@ -219,3 +219,41 @@ html, body {
     color: #133A96;
     background-color: white;
 }
+
+/*Footer*/
+.footer {
+    background-color: #1E2831;
+    color: white;
+    padding-top: 37px;
+    padding-bottom: 27px;
+    padding-left: 190px;
+    padding-right: 190px;
+    font-size: 13px;
+}
+
+.footer small {
+    font-size: 8px;
+    margin-left: 5px;
+}
+
+.socials {
+    float: right;
+}
+
+.socials span {
+    margin-right: 1px;
+}
+
+.socials a {
+    color: white;
+    margin-left: 2px;
+    display: inline-block;
+}
+
+.fa-twitter:hover {
+    color: #C6F1FF;
+}
+
+.fa-github:hover {
+    color: #CECECE;
+}
