@@ -1,0 +1,85 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+/*Header*/
+.header {
+    position: absolute;
+    padding-top: 25px;
+    height: 100px;
+    width: 100%;
+    user-select: none;
+}
+
+.name {
+    position: absolute;
+    display: flex;
+    font-family: Bitter;
+    color: white;
+}
+
+.name img {
+    margin-left: 30px;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.name h3 {
+    margin: 0;
+    margin-top: 3px;
+}
+
+/*Menu*/
+.menu {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+}
+  
+.menu a {
+    font-size: 15px;
+    margin-left: 30px;
+    float: left;
+    text-decoration: none;
+    color: white;
+}
+  
+.menu a:hover {
+    color: #10317C;
+}
+
+.menu .active {
+    color: #0D2765;
+}
+
+/*Banner*/
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://avatars.githubusercontent.com/u/100360572?v=4");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100vh;
+    font-size: 25px;
+    user-select: none;
+}
+
+.banner h1 {
+    margin: 0;
+}
+
+/*Title*/
+.title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 300;
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
