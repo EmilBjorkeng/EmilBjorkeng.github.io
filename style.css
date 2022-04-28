@@ -17,7 +17,6 @@ html, body {
 .name {
     position: absolute;
     display: flex;
-    font-family: Bitter;
     color: white;
 }
 
@@ -46,6 +45,7 @@ html, body {
     float: left;
     text-decoration: none;
     color: white;
+    transition: .7s ease;
 }
   
 .menu a:hover {
@@ -75,11 +75,124 @@ html, body {
     margin: 0;
 }
 
+/*Down arrow*/
+.arrow {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 0;
+    bottom: 15px;
+    margin-left: calc(50% - 27.5px)
+}
+
+.arrow:hover {
+    cursor: pointer;
+}
+
+.arrow-down::after,
+.arrow-down::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 18%;
+}
+.arrow-down::after {
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+    transform: rotate(-45deg);
+    left: calc(50% - 5.5px);
+}
+.arrow-down::before {
+    width: 2px;
+    height: 33px;
+    left: calc(50% - 1.5px);
+    background: white;
+    transform: translate(0, 1px);
+}
+
 /*Title*/
 .title {
     text-align: center;
     font-size: 48px;
     font-weight: 300;
-    margin-top: 75px;
-    margin-bottom: 75px;
+    margin-top: 50px;
+}
+
+/*Showcase*/
+.collection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin-left: 300px;
+    margin-right: 300px;
+    list-style: none;
+    margin-bottom: 65px;
+    margin-top: 50px;
+}
+
+.collection li {
+    margin: 2px;
+    width: 17vw;
+    height: 17vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.collection a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.collection a:hover {
+    cursor: pointer;
+}
+
+.collection img {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    transition: top 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.collection h3 {
+    background-color: #EDF0F3;
+    position: absolute;
+    width: 100%;
+    bottom: -50px;
+    text-align: center;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    transition: bottom 0.3s;
+    transition-timing-function: ease-in-out;
+    color: black;
+    margin: 0;
+}
+
+.collection a:hover h3 {
+    bottom: 0px;
+}
+
+.collection a:hover img {
+    top: -13px;
+}
+
+@media screen and (max-width: 1365px) {
+    .collection li {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@media screen and (max-width: 1108px) {
+    .collection li {
+        min-width: 500px;
+        height: 500px;
+    }
 }
