@@ -80,9 +80,8 @@ html, body {
     position: absolute;
     width: 55px;
     height: 55px;
-    left: 0;
+    left: calc(50% - 27.5px);
     bottom: 15px;
-    margin-left: calc(50% - 27.5px)
 }
 
 .arrow:hover {
@@ -121,7 +120,7 @@ html, body {
     margin-top: 50px;
 }
 
-/*Showcase*/
+/*Collection*/
 .collection {
     display: flex;
     justify-content: center;
@@ -130,7 +129,6 @@ html, body {
     margin-left: 300px;
     margin-right: 300px;
     list-style: none;
-    margin-bottom: 65px;
     margin-top: 50px;
 }
 
@@ -140,6 +138,20 @@ html, body {
     height: 17vw;
     position: relative;
     overflow: hidden;
+}
+
+@media screen and (max-width: 1365px) {
+    .collection li {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@media screen and (max-width: 1108px) {
+    .collection li {
+        min-width: 500px;
+        height: 500px;
+    }
 }
 
 .collection a {
@@ -161,6 +173,10 @@ html, body {
     transition-timing-function: ease-in-out;
 }
 
+.collection a:hover img {
+    top: -13px;
+}
+
 .collection h3 {
     background-color: #EDF0F3;
     position: absolute;
@@ -179,20 +195,27 @@ html, body {
     bottom: 0px;
 }
 
-.collection a:hover img {
-    top: -13px;
+/*Show button*/
+.show-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 32px;
 }
 
-@media screen and (max-width: 1365px) {
-    .collection li {
-        width: 20vw;
-        height: 20vw;
-    }
+.show-button a {
+    text-decoration: none;
+    color: white;
+    background-color: #133A96;
+    padding: 5px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #133A96;
+    font-weight: 500;
 }
 
-@media screen and (max-width: 1108px) {
-    .collection li {
-        min-width: 500px;
-        height: 500px;
-    }
+.show-button a:hover {
+    color: #133A96;
+    background-color: white;
 }
