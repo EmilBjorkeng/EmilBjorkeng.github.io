@@ -1,0 +1,74 @@
+.footer {
+    background-color: #1E2831;
+    color: white;
+    padding-top: 37px;
+    padding-bottom: 27px;
+    padding-left: 190px;
+    padding-right: 190px;
+    font-size: 15px;
+}
+
+.footer small {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.socials {
+    float: right;
+}
+
+.socials span {
+    margin-right: 1px;
+}
+
+.socials a {
+    color: white;
+    margin-left: 2px;
+    display: inline-block;
+}
+
+.fa-twitter:hover {
+    color: #C6F1FF;
+}
+
+.fa-github:hover {
+    color: #CECECE;
+}
+
+.up-scroller {
+    position: absolute;
+    right: 0;
+    margin-right: 75px;
+    transform: translate(0, 5px);
+    padding: 5px;
+}
+
+.up-scroller:hover {
+    cursor: pointer;
+}
+
+.the-pointer {
+    border-top: 2px solid #354656;
+    border-right: 2px solid #354656;
+    transform: rotate(-45deg);
+    width: 10px;
+    height: 10px;
+}
+
+.up-scroller:hover .the-pointer {
+    border-color: white;
+}
+
+@media screen and (max-width: 1150px) {
+    .collection li {
+        width: 25vw;
+        height: 25vw;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .collection li {
+        min-width: 500px;
+        height: 500px;
+    }
+}

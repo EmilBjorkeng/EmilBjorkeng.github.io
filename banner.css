@@ -1,0 +1,61 @@
+.banner {
+    width: 100%;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100vh;
+    font-size: 25px;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.banner h1 {
+    margin: 0;
+    max-height: 100%;
+}
+
+.arrow {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: calc(50% - 27.5px);
+    bottom: 15px;
+}
+
+.arrow:hover {
+    cursor: pointer;
+}
+
+.arrow-down::after,
+.arrow-down::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 18%;
+}
+.arrow-down::after {
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+    transform: rotate(-45deg);
+    left: calc(50% - 5.5px);
+}
+.arrow-down::before {
+    width: 2px;
+    height: 33px;
+    left: calc(50% - 1.5px);
+    background: white;
+    transform: translate(0, 1px);
+}

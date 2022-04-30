@@ -1,0 +1,25 @@
+.header {
+    position: absolute;
+    padding-top: 25px;
+    height: 100px;
+    width: 100%;
+    user-select: none;
+}
+
+.name {
+    position: absolute;
+    display: flex;
+    color: white;
+}
+
+.name img {
+    margin-left: 30px;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.name h3 {
+    margin: 0;
+    margin-top: 3px;
+}
