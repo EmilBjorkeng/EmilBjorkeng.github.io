@@ -1,8 +1,15 @@
+.collection-section {
+    min-height: 100vh;
+    width: 100%;
+}
+
 .title {
     text-align: center;
     font-size: 48px;
     font-weight: 300;
-    margin-top: 50px;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .collection {
@@ -12,7 +19,8 @@
     margin-left: 15vw;
     margin-right: 15vw;
     list-style: none;
-    margin-top: 50px;
+    vertical-align: middle;
+    margin-bottom: 0;
 }
 
 .collection li {
@@ -75,16 +83,56 @@
     text-decoration: none;
     color: white;
     background-color: #133A96;
-    padding: 7px;
+    padding: 8px;
+    border: solid 3px #133A96;
     border-radius: 3px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #133A96;
     font-weight: 500;
-    font-size: 17px;
+    font-size: 21px;
 }
 
 .show-button a:hover {
     color: #133A96;
     background-color: white;
+}
+
+@media screen and (max-width: 1150px) {
+    .collection li {
+        width: 25vw;
+        height: 25vw;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .collection li {
+        min-width: 500px;
+        height: 500px;
+    }
+}
+
+@media screen and (max-height: 950px) {
+    .collection {
+        margin-left: 25vw;
+        margin-right: 25vw;
+    }
+    .collection li {
+        min-width: 0;
+        width: 30vh;
+        height: 30vh;
+    }
+}
+
+@media screen and (max-height: 486px) {
+    .collection li {
+        min-width: 0;
+        width: 40vh;
+        height: 40vh;
+    }
+}
+
+@media screen and (max-height: 365px) {
+    .collection li {
+        min-width: 0;
+        width: 50vh;
+        height: 50vh;
+    }
 }

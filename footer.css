@@ -58,17 +58,3 @@
 .up-scroller:hover .the-pointer {
     border-color: white;
 }
-
-@media screen and (max-width: 1150px) {
-    .collection li {
-        width: 25vw;
-        height: 25vw;
-    }
-}
-
-@media screen and (max-width: 950px) {
-    .collection li {
-        min-width: 500px;
-        height: 500px;
-    }
-}
