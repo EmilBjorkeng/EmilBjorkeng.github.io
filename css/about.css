@@ -1,0 +1,26 @@
+.about-me {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    font-size: 20px;
+}
+
+.about-me img {
+    width: 35vw;
+    display: inline-block;
+}
+
+.about-me .text{
+    width: 35vw;
+    display: inline-block;
+    position: absolute;
+    right: 15vw;
+    top: 8vw;
+}
+
+.about-me a {
+    display: block;
+    margin-top: 8px;
+    font-size: 17px;
+    color: grey;
+}
