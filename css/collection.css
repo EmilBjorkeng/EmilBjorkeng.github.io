@@ -95,44 +95,20 @@
     background-color: white;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1180px) {
+    .collection {
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
     .collection li {
-        width: 25vw;
-        height: 25vw;
+        width: 30vw;
+        height: 30vw;
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 880px) {
     .collection li {
         min-width: 500px;
         height: 500px;
-    }
-}
-
-@media screen and (max-height: 950px) {
-    .collection {
-        margin-left: 25vw;
-        margin-right: 25vw;
-    }
-    .collection li {
-        min-width: 0;
-        width: 30vh;
-        height: 30vh;
-    }
-}
-
-@media screen and (max-height: 486px) {
-    .collection li {
-        min-width: 0;
-        width: 40vh;
-        height: 40vh;
-    }
-}
-
-@media screen and (max-height: 365px) {
-    .collection li {
-        min-width: 0;
-        width: 50vh;
-        height: 50vh;
     }
 }
