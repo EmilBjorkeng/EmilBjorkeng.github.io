@@ -4,9 +4,3 @@ html, body {
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: 400;
 }
-
-hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    opacity: 25%;
-}

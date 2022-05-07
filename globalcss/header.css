@@ -10,6 +10,9 @@
     position: absolute;
     display: flex;
     color: white;
+    cursor: pointer;
+    z-index: 1;
+    text-decoration: none;
 }
 
 .name img {

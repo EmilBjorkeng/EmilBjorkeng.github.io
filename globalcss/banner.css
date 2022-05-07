@@ -59,3 +59,13 @@
     background: white;
     transform: translate(0, 1px);
 }
+
+.small-banner {
+    height: 50vh;
+    line-height: 50vh;
+    font-size: 35px;
+}
+
+.small-banner img {
+    top: -10vh;
+}
