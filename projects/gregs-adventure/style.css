@@ -1,0 +1,7 @@
+.banner img {
+    transform: translate(0, -30px);
+}
+
+.box .h {
+    transform: translate(-60px, 0);
+}

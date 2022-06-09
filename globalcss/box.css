@@ -2,15 +2,27 @@
     margin-top: 40px;
     margin-bottom: 40px;
     position: relative;
-    font-size: 20px;
-    width: 100%;
+    font-size: 1.15vw;
+    width: calc(100% - 15px);
     height: 35vw;
+    left: 15px;
 }
 
-.box img {
+.box .img-container {
     width: 35vw;
+    height: 35vw;
+    overflow: hidden;
     display: inline-block;
     position: absolute;
+    border-radius: 10px;
+}
+
+.box .w {
+    width: 100%;
+}
+
+.box .h {
+    height: 100%;
 }
 
 .box .text{
@@ -28,8 +40,8 @@
     color: grey;
 }
 
-.right-box img {
-    right: 0;
+.right-box .img-container {
+    right: 15px;
 }
 
 .right-box .text {
