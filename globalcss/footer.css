@@ -58,3 +58,14 @@
 .up-scroller:hover .the-pointer {
     border-color: white;
 }
+
+@media screen and (max-width: 900px) {
+    .footer {
+        font-size: 1.65vw;
+        padding-left: 21vw;
+        padding-right: 21vw;
+    }
+    .footer small {
+        font-size: 1.12vw;
+    }
+}

@@ -2,9 +2,7 @@
     width: 100%;
     height: 100vh;
     color: white;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 100vh;
+    display: table;
     font-size: 25px;
     user-select: none;
     overflow: hidden;
@@ -15,13 +13,19 @@
     position: absolute;
     left: 0;
     z-index: -1;
-    min-width: 100%;
-    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .banner h1 {
     margin: 0;
     max-height: 100%;
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center;
+    z-index: 1;
+    user-select: text;
 }
 
 .arrow {
@@ -62,10 +66,5 @@
 
 .small-banner {
     height: 50vh;
-    line-height: 50vh;
     font-size: 35px;
-}
-
-.small-banner img {
-    top: -10vh;
 }

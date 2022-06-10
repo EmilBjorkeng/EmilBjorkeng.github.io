@@ -112,3 +112,10 @@
         height: 500px;
     }
 }
+
+@media screen and (max-width: 670px) {
+    .collection li {
+        min-width: 74.5vw;
+        height: 74.5vw;
+    }
+}
