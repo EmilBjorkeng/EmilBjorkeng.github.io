@@ -5,3 +5,7 @@ html, body {
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: 400;
 }
+
+::selection {
+    background-color: #1E284150;
+}
