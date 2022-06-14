@@ -1,53 +1,36 @@
 .box {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 2rem 1rem;
     position: relative;
-    font-size: 1.15vw;
-    width: calc(100% - 15px);
-    height: 35vw;
-    left: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.box .img-container {
-    width: 35vw;
-    height: 35vw;
-    overflow: hidden;
-    display: inline-block;
-    position: absolute;
+.box img {
+    width: 25rem;
     border-radius: 10px;
+    flex: 0 0 35%;
 }
 
-.box .w {
-    width: 100%;
+.text {
+    width: 48ch;
+    margin: auto;
+    font-size: 1.2rem;
 }
 
-.box .h {
-    height: 100%;
-}
-
-.box .text{
-    width: 35vw;
-    display: inline-block;
-    position: absolute;
-    right: 15vw;
-    top: 8vw;
+.big-text {
+    font-size: 1.35rem;
 }
 
 .box a {
     display: block;
-    margin-top: 8px;
-    font-size: 17px;
+    margin-top: .7rem;
+    font-size: 1rem;
     color: grey;
+    width: 9ch;
 }
 
-.right-box .img-container {
-    right: 15px;
-}
-
-.right-box .text {
-    left: 15vw;
-}
-
-.box-in-a-stack {
-    margin-top: 200px;
+.box-right {
+    flex-direction: row-reverse;
 }

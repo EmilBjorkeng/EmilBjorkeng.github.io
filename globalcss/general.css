@@ -9,3 +9,9 @@ html, body {
 ::selection {
     background-color: #1E284150;
 }
+
+.faded-hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    opacity: 25%;
+}

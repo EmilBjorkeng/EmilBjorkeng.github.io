@@ -1,9 +1,9 @@
 .banner {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     color: white;
     display: table;
-    font-size: 25px;
+    font-size: 1.8rem;
     user-select: none;
     overflow: hidden;
     position: relative;
@@ -30,10 +30,14 @@
 
 .arrow {
     position: absolute;
-    width: 55px;
-    height: 55px;
-    left: calc(50% - 27.5px);
-    bottom: 15px;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    font-size: 1rem;
 }
 
 .arrow:hover {
@@ -42,29 +46,36 @@
 
 .arrow-down::after,
 .arrow-down::before {
-    content: "";
+    content: '';
     display: block;
     box-sizing: border-box;
     position: absolute;
     bottom: 18%;
 }
+
 .arrow-down::after {
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid white;
-    border-left: 2px solid white;
+    width: .625em;
+    height: .625em;
+    border-bottom: .125em solid white;
+    border-left: .125em solid white;
     transform: rotate(-45deg);
-    left: calc(50% - 5.5px);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
+
 .arrow-down::before {
-    width: 2px;
-    height: 33px;
-    left: calc(50% - 1.5px);
+    width: .125em;
+    height: 2em;
     background: white;
-    transform: translate(0, 1px);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 .small-banner {
-    height: 50vh;
-    font-size: 35px;
+    height: 50%;
+    font-size: 1.6rem;
 }

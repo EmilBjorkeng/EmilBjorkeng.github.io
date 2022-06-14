@@ -1,8 +1,3 @@
-.collection-section {
-    min-height: 100vh;
-    width: 100%;
-}
-
 .title {
     text-align: center;
     font-size: 48px;
@@ -16,17 +11,16 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-left: 15vw;
-    margin-right: 15vw;
+    margin-left: 15rem;
+    margin-right: 15rem;
     list-style: none;
     vertical-align: middle;
-    margin-bottom: 0;
 }
 
 .collection li {
-    margin: 2px;
-    width: 18vw;
-    height: 18vw;
+    margin: .2rem;
+    min-width: 16.1rem;
+    aspect-ratio: 1 / 1;
     position: relative;
     overflow: hidden;
 }
@@ -46,8 +40,7 @@
     height: 100%;
     top: 0;
     position: absolute;
-    transition: top 0.3s;
-    transition-timing-function: ease-in-out;
+    transition: top 300ms ease-in-out;
 }
 
 .collection a:hover img {
@@ -62,8 +55,7 @@
     text-align: center;
     padding-top: 13px;
     padding-bottom: 13px;
-    transition: bottom 0.3s;
-    transition-timing-function: ease-in-out;
+    transition: bottom 300ms ease-in-out;
     color: black;
     margin: 0;
 }
@@ -72,50 +64,23 @@
     bottom: 0px;
 }
 
-.show-button {
+.show-all-btn {
     width: 100%;
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
 }
 
-.show-button a {
+.show-all-btn a {
     text-decoration: none;
     color: white;
     background-color: #133A96;
-    padding: 8px;
-    border: solid 3px #133A96;
-    border-radius: 3px;
+    padding: .3em .5em;
+    border: solid .2em #133A96;
+    border-radius: .3em;
     font-weight: 500;
-    font-size: 21px;
+    font-size: 1.1rem;
 }
 
-.show-button a:hover {
+.show-all-btn a:hover {
     color: #133A96;
     background-color: white;
-}
-
-@media screen and (max-width: 1180px) {
-    .collection {
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
-    .collection li {
-        width: 30vw;
-        height: 30vw;
-    }
-}
-
-@media screen and (max-width: 880px) {
-    .collection li {
-        min-width: 500px;
-        height: 500px;
-    }
-}
-
-@media screen and (max-width: 670px) {
-    .collection li {
-        min-width: 74.5vw;
-        height: 74.5vw;
-    }
 }

@@ -1,28 +1,64 @@
 .header {
     position: absolute;
-    padding-top: 25px;
-    height: 100px;
+    padding-top: 2rem;
     width: 100%;
     user-select: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .name {
-    position: absolute;
-    display: flex;
     color: white;
     cursor: pointer;
     z-index: 1;
     text-decoration: none;
+    margin-left: 2rem;
+    display: flex;
 }
 
 .name img {
-    margin-left: 30px;
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 .name h3 {
     margin: 0;
-    margin-top: 3px;
+    margin-left: .5rem;
+    font-size: 1.25rem;
+}
+
+.menu {
+    margin-right: 2rem;
+    z-index: 1;
+}
+  
+.menu a {
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    color: white;
+    transition: .7s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    height: 2.5px;
+    width: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 1.25rem;
+    transition: width 150ms ease-out;
+}
+  
+.menu a:hover::after,
+.menu .active::after {
+    width: 102%;
 }
