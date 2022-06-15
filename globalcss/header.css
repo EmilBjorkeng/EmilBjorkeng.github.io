@@ -59,6 +59,7 @@
 }
   
 .menu a:hover::after,
+.menu a:focus::after,
 .menu .active::after {
     width: 102%;
 }

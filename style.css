@@ -48,7 +48,8 @@
     transition: top 300ms ease-in-out;
 }
 
-.col a:hover img {
+.col a:hover img,
+.col a:focus img {
     top: -13px;
 }
 
@@ -65,6 +66,7 @@
     margin: 0;
 }
 
-.col a:hover h3 {
+.col a:hover h3,
+.col a:focus h3 {
     bottom: 0px;
 }

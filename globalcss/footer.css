@@ -27,7 +27,7 @@
     color: #CECECE;
 }
 
-.up-scroller {
+.scroller {
     position: absolute;
     right: 0;
     margin-right: 5%;
@@ -35,18 +35,23 @@
     padding: .25rem;
 }
 
-.up-scroller:hover {
+.scroller:hover {
     cursor: pointer;
 }
 
-.the-pointer {
+.scroller::after {
+    content: '';
     border-top: .125em solid #354656;
     border-right: .125em solid #354656;
     transform: rotate(-45deg);
     width: .625em;
     height: .625em;
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    font-size: 1.2em;
 }
 
-.up-scroller:hover .the-pointer {
+.scroller:hover::after {
     border-color: white;
 }
