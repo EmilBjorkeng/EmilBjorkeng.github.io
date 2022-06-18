@@ -19,10 +19,6 @@
     font-size: 1.2rem;
 }
 
-.big-text {
-    font-size: 1.35rem;
-}
-
 .box a {
     display: block;
     margin-top: .7rem;
@@ -31,6 +27,6 @@
     width: 9ch;
 }
 
-.box-right {
-    flex-direction: row-reverse;
+.big-text {
+    font-size: 1.45rem;
 }
