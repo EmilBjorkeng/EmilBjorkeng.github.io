@@ -1,7 +1,7 @@
 .box {
     margin: 2rem 1rem;
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -11,12 +11,14 @@
     width: 25rem;
     border-radius: 10px;
     flex: 0 0 35%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 0% 0%;
 }
 
 .text {
     width: 48ch;
     margin: auto;
-    font-size: 1.2rem;
 }
 
 .box a {
@@ -25,8 +27,4 @@
     font-size: 1rem;
     color: grey;
     width: 9ch;
-}
-
-.big-text {
-    font-size: 1.45rem;
 }
