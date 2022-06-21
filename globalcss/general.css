@@ -10,6 +10,11 @@ html, body {
     background-color: #1E284150;
 }
 
+.content {
+    background-color: white;
+    padding-top: 1rem;
+}
+
 .faded-hr {
     margin-top: 4px;
     margin-bottom: 4px;
