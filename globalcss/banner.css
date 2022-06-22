@@ -19,12 +19,9 @@
 }
 
 .banner h1 {
-    margin: 0;
-    max-height: 100%;
-    display: table-cell; 
-    vertical-align: middle; 
+    display: table-cell;
+    vertical-align: middle;
     text-align: center;
-    z-index: 1;
     user-select: text;
     font-size: 3vw;
 }

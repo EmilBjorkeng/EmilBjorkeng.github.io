@@ -5,56 +5,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Main Page</title>
 		<link rel = "icon" type = "image/png" href ="https://avatars.githubusercontent.com/u/100360572?v=4" />
-		<link rel="stylesheet" href="/globalcss/general.css" type="text/css">
-		<link rel="stylesheet" href="/globalcss/header.css" type="text/css">
-		<link rel="stylesheet" href="/globalcss/banner.css" type="text/css">
-		<link rel="stylesheet" href="/globalcss/box.css" type="text/css">
-		<link rel="stylesheet" href="/globalcss/footer.css" type="text/css">
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/style.css" type="text/css" />
+		<link rel="stylesheet" href="/globalcss/menu.css" type="text/css" />
+		<link rel="stylesheet" href="/globalcss/banner.css" type="text/css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<!--Header-->
-		<div class="header">
-			<!--Name-->
-			<a href="/" class="name">
-				<img src="https://avatars.githubusercontent.com/u/100360572?v=4" alt="My Profile Picture">
-				<h3>Emil Bjørkeng</h3>
-			</a>
-			<!--Menu-->
-			<div class="menu">
-				<a href="/" class="active">Home</a>
-				<a href="/projects/">Projects</a>
-				<a href="/about/">About Me</a>
-			</div>
+		<!--Menu-->
+		<div class="menu">
+			<a href="/" class="active">Home</a>
+			<a href="/projects/">Projects</a>
+			<a href="/about/">About Me</a>
 		</div>
 		<!--Banner-->
 		<div class="banner">
-			<img src="/images/DSC00198.jpg">
-			<h1>Student and freetime programmer</h1>
-			<a onclick="window.scroll({top:innerHeight, left:0, behavior:'smooth'})" class="arrow"></a>
-		</div>
-		<div class="content">
-			
-		</div>
-			<!--Footer-->
-			<div class="footer">
-				<span>Powered by: Me</span>
-				<small>I wrote it by hand</small>
-				<div class="socials">
-					<span>Contact me:</span>
-					<a href="https://twitter.com/EmilBjorkeng">
-						<i class="fa fa-twitter"></i>
-					</a>
-					<a href="https://github.com/EmilBjorkeng">
-						<i class="fa fa-github"></i>
-					</a>
-				</div>
-				<a class="scroller" onclick="window.scroll({top:0, left:0, behavior:'smooth'})"></a>
-			</div>	
+			<img src="/images/DSC00198.png">
+			<h1 class="fade-in">Emil Bjørkeng</h1>
+			<span class="fade-in">Student and freetime programmer</span>
 		</div>
 	</body>
 </html>

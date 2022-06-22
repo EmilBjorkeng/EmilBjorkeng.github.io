@@ -1,0 +1,40 @@
+.menu {
+    position: absolute;
+    margin-right: 2em;
+    z-index: 1;
+    user-select: none;
+    right: 0;
+    padding: 2em;
+    font-size: 1.1rem;
+}
+  
+.menu a {
+    font-size: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    text-decoration: none;
+    color: white;
+    transition: .7s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    height: .18em;
+    width: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 1.25em;
+    transition: width 150ms ease-out;
+}
+  
+.menu a:hover::after,
+.menu a:focus::after,
+.menu .active::after {
+    width: 102%;
+}
