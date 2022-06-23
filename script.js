@@ -25,12 +25,9 @@ exporationDate.setDate(exporationDate.getDate() + 30); // Expires after 30 days
 exporationDate = exporationDate.toUTCString();
 
 // Language Switch Function
-function langSwitch() {
-    var isActive = lang_switch.classList[1] != "active-switch";
-
+function langSwitch(nor) {
     // Norwegian
-    if (isActive) {
-        lang_switch.classList.add("active-switch");
+    if (nor) {
         document.cookie = "lang=nb; path=/; expires=" + exporationDate;
 
         for (let i = 0; i < nb.length; i++)
@@ -40,7 +37,6 @@ function langSwitch() {
     }
     // English
     else {
-        lang_switch.classList.remove("active-switch");
         document.cookie = "lang=en; path=/; expires=" + exporationDate;
 
         for (let i = 0; i < en.length; i++)
