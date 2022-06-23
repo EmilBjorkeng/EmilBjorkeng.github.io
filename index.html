@@ -11,19 +11,27 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+		<script type="text/javascript", src="script.js" defer></script>
 	</head>
 	<body>
+		<!--Lang-->
+		<a class="lang-switch" onclick="langSwitch()"></a>
 		<!--Menu-->
 		<div class="menu">
-			<a href="/" class="active">Home</a>
-			<a href="/projects/">Projects</a>
-			<a href="/about/">About Me</a>
+			<a href="/" class="active en">Home</a>
+			<a href="/" class="active nb">Hjem</a>
+			<a href="/projects/" class="en">Projects</a>
+			<a href="/projects/" class="nb">Projekter</a>
+			<a href="/about/" class="en">About Me</a>
+			<a href="/about/" class="nb">Om Meg</a>
 		</div>
 		<!--Banner-->
 		<div class="banner">
 			<img src="/images/DSC00198.png">
-			<h1 class="fade-in">Emil Bjørkeng</h1>
-			<span class="fade-in">Student and freetime programmer</span>
+			<h1 class="fade-in en">Emil Bjorkeng</h1>
+			<h1 class="fade-in nb">Emil Bjørkeng</h1>
+			<span class="fade-in en">Student and freetime programmer</span>
+			<span class="fade-in nb">Student og fritids programmerer</span>
 		</div>
 	</body>
 </html>

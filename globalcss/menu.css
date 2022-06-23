@@ -1,6 +1,5 @@
 .menu {
     position: absolute;
-    margin-right: 2em;
     z-index: 1;
     user-select: none;
     right: 0;

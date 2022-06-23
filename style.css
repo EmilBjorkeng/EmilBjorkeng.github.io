@@ -6,9 +6,39 @@ html, body {
     font-weight: 400;
 }
 
+::selection {
+    background-color: #1E28416F;
+}
+
+.lang-switch {
+    position: absolute;
+    font-size: .9rem;
+    height: 1em;
+    width: 2.5em;
+    margin: 1em;
+    border-radius: 1em;
+    border: .15em solid white;
+    z-index: 1;
+}
+
+.lang-switch::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    width: .7em;
+    height: .7em;
+    border-radius: 1em;
+    margin: .133em;
+    left: 0;
+    transition: left .3s ease;
+}
+
+.active-switch::after {
+    left: 1.55em;
+}
 
 .fade-in {
-    animation: fadeIn 3s;
+    animation: fadeIn 2000ms;
 }
 
 @keyframes fadeIn {
@@ -16,7 +46,11 @@ html, body {
     100% { opacity: 1; }
 }
 
-.banner span {
+h1 {
+    font-size: 3.8rem !important;
+}
+
+span {
     position: absolute;
     top: 55%;
     left: 0;
