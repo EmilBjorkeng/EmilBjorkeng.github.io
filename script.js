@@ -1,51 +1,3 @@
-/*var title = document.getElementsByClassName("banner")[0].childNodes[7];
-var text = title.textContent;
-title.textContent = "";
-
-var speed = 90;
-let i = 0;
-function typeWriter() {
-    if (i < text.length) {
-        title.textContent += text[i];
-        i++;
-        setTimeout(typeWriter, speed);
-    }
-}
-typeWriter()
-
-<script type="text/javascript", src="script.js" defer></script>
-<a onclick="window.scroll({top:innerHeight, left:0, behavior:'smooth'})" class="arrow"></a>*/
-
-var en = document.getElementsByClassName("en")
-var nb = document.getElementsByClassName("nb")
-var lang_switch = document.getElementsByClassName("lang-switch")[0]
-
-let exporationDate = new Date(); 
-exporationDate.setDate(exporationDate.getDate() + 30); // Expires after 30 days
-exporationDate = exporationDate.toUTCString();
-
-// Language Switch Function
-function langSwitch(nor) {
-    // Norwegian
-    if (nor) {
-        document.cookie = "lang=nb; path=/; expires=" + exporationDate;
-
-        for (let i = 0; i < nb.length; i++)
-            nb[i].style.display = en[i].style.display;
-        for (let i = 0; i < en.length; i++)
-            en[i].style.display = "none";
-    }
-    // English
-    else {
-        document.cookie = "lang=en; path=/; expires=" + exporationDate;
-
-        for (let i = 0; i < en.length; i++)
-            en[i].style.display = nb[i].style.display;
-        for (let i = 0; i < nb.length; i++)
-            nb[i].style.display = "none";
-    }
-}
-
 // Get Cookies
 function getCookie(cname) {
     let name = cname + "=";
@@ -63,14 +15,48 @@ function getCookie(cname) {
     return undefined;
 }
 
+var exporationDate = new Date();
+exporationDate.setDate(exporationDate.getDate() + 30); // Expires after 30 days
+exporationDate = exporationDate.toUTCString();
+var en = document.getElementsByClassName("en")
+var nb = document.getElementsByClassName("nb")
+
 // Cookies
-if (!getCookie("lang") || getCookie("lang") == "en") {
+let cookieLang = getCookie("lang");
+if (!cookieLang) {
     document.cookie = "lang=en; path=/; expires=" + exporationDate;
+    cookieLang = "en"
+}
+
+// English
+if (!getCookie("lang") || getCookie("lang") == "en") {
     for (let i = 0; i < nb.length; i++)
         nb[i].style.display = "none";
 }
+// Norwegian
 else if (getCookie("lang") == "nb") {
-    lang_switch.classList.add("active-switch");
     for (let i = 0; i < en.length; i++)
         en[i].style.display = "none";
+}
+
+// Language Switch Function
+function langSwitch(lang) {
+    // Norwegian
+    if (lang == "nb") {
+        document.cookie = "lang=nb; path=/; expires=" + exporationDate;
+
+        for (let i = 0; i < nb.length; i++)
+            nb[i].style.display = en[i].style.display;
+        for (let i = 0; i < en.length; i++)
+            en[i].style.display = "none";
+    }
+    // English
+    else if (lang == "en") {
+        document.cookie = "lang=en; path=/; expires=" + exporationDate;
+
+        for (let i = 0; i < en.length; i++)
+            en[i].style.display = nb[i].style.display;
+        for (let i = 0; i < nb.length; i++)
+            nb[i].style.display = "none";
+    }
 }

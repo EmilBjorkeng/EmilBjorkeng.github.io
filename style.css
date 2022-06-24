@@ -10,21 +10,6 @@ html, body {
     background-color: #1E28416F;
 }
 
-.lang-switch {
-    position: absolute;
-    font-size: .9rem;
-    height: 1.4em;
-    width: 1.6em;
-    margin: 1em;
-    border-radius: .3em;
-    border: .15em solid white;
-    z-index: 1;
-    padding: 0 .3em;
-    color: white;
-    user-select: none;
-    cursor: pointer;
-}
-
 .fade-in {
     animation: fadeIn 2000ms;
 }
