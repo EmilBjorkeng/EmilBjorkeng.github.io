@@ -5,33 +5,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>About Me</title>
 		<link rel = "icon" type = "image/png" href ="https://avatars.githubusercontent.com/u/100360572?v=4" />
-        <link rel="stylesheet" href="/globalcss/general.css" type="text/css">
-		<link rel="stylesheet" href="/globalcss/header.css" type="text/css">
-        <link rel="stylesheet" href="/globalcss/menu.css" type="text/css">
-        <link rel="stylesheet" href="/globalcss/banner.css" type="text/css">
-        <link rel="stylesheet" href="/globalcss/box.css" type="text/css">
-        <link rel="stylesheet" href="/globalcss/footer.css" type="text/css">
-        <link rel="stylesheet" href="/projects/style.css" type="text/css">
-
+        <link rel="stylesheet" href="/global/general.css" type="text/css">
+		<link rel="stylesheet" href="/global/header.css" type="text/css">
+        <link rel="stylesheet" href="/global/menu.css" type="text/css">
+        <link rel="stylesheet" href="/global/banner.css" type="text/css">
+        <link rel="stylesheet" href="/global/box.css" type="text/css">
+        <link rel="stylesheet" href="/global/footer.css" type="text/css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript", src="/global/cookies.js" defer></script>
     </head>
     <body>
-        <!--Header-->
-		<div class="header">
-			<!--Name-->
-			<a href="/" class="name">
-                <img src="https://avatars.githubusercontent.com/u/100360572?v=4" alt="My Profile Picture">
-				<h3>Emil Bjørkeng</h3>
-            </a>
-			<!--Menu-->
-			<div class="menu">
-				<a href="/">Home</a>
-				<a href="/projects/">Projects</a>
-				<a href="/about/" class="active">About Me</a>
-			</div>
+		<!--Menu-->
+		<div class="menu">
+			<a href="/" class="en">Home</a>
+			<a href="/" class="nb">Hjem</a>
+			<a href="/projects/" class="en">Projects</a>
+			<a href="/projects/" class="nb">Projekter</a>
+			<a href="/about/" class="active en">About Me</a>
+			<a href="/about/" class="active nb">Om Meg</a>
+			<a href="javascript:langSwitch('nb')" class="en">Norwegian</a>
+			<a href="javascript:langSwitch('en')" class="nb">English</a>
 		</div>
         <!--Small Banner-->
 		<div class="banner small-banner">
@@ -39,11 +35,6 @@
 			<h1>About Me</h1>
 		</div>
 		<div class="content">
-			<form action="mailto:emil.bjorkeng@gmail.com" method="post" enctype="text/plain">
-				text1:<br><input type="text" name="text1"> <br>
-				text2:<br><input type="text" name="text2"><br>
-				<input type="submit" value="Send">
-			 </form>
 			<!--About me-->
 			<div class="box">
 				<img src="https://avatars.githubusercontent.com/u/100360572?v=4">
