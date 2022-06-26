@@ -18,16 +18,3 @@ html, body {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
-
-h1 {
-    font-size: 3.8rem !important;
-}
-
-span {
-    position: absolute;
-    top: 55%;
-    left: 0;
-    text-align: center;
-    width: 100%;
-    user-select: text;
-}
