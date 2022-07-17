@@ -11,11 +11,10 @@
 .bg-img {
     position: absolute;
     height: 220%;
-    width: 100%;
+    width: calc(100% + 20px);
     object-fit: cover;
     top: -75%;
     filter:blur(6px);
-    border: 10px solid black;
     left: -10px;
 }
 
