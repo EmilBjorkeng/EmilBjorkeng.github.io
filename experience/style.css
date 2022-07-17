@@ -1,0 +1,66 @@
+.bnr {
+    filter:
+        brightness(40%)
+        sepia(100%)
+        hue-rotate(190deg)
+        saturate(75%);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: -650px;
+    width: 100%;
+    margin: 0;
+    user-select: none;
+}
+
+.timeline {
+    background-color: cyan;
+    height: 100rem;
+    width: .2rem;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 300px;
+    padding: 0;
+}
+
+.point {
+    width: 45ch;
+    margin-left: 4rem;
+    color: white;
+    list-style: none;
+    position: absolute;
+}
+
+.point h4 {
+    margin: 0;
+    color: cyan;
+}
+
+.point h2 {
+    margin-top: 0;
+}
+
+.point-left {
+    text-align: right;
+    margin-left: 0;
+    right: 0;
+    margin-right: 4rem;
+}
+
+.point::before {
+    content: '';
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: cyan;
+    border-radius: 100%;
+    position: absolute;
+    left: -4.5rem;
+}
+
+.point-left::before {
+    right: -4.5rem;
+    left: auto;
+}
