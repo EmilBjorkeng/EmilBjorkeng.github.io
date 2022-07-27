@@ -48,18 +48,18 @@ function langSwitch(lang) {
     if (lang == "nb") {
         document.cookie = "lang=nb; path=/; expires=" + exporationDate;
 
-        for (let i = 0; i < nb_elements.length; i++)
-            nb_elements[i].style.display = "initial";
         for (let i = 0; i < en_elements.length; i++)
             en_elements[i].style.display = "none";
+        for (let i = 0; i < nb_elements.length; i++)
+            nb_elements[i].style.display = "";
     }
     // English
     else if (lang == "en") {
         document.cookie = "lang=en; path=/; expires=" + exporationDate;
 
-        for (let i = 0; i < en_elements.length; i++)
-            en_elements[i].style.display = "initial";
         for (let i = 0; i < nb_elements.length; i++)
             nb_elements[i].style.display = "none";
+        for (let i = 0; i < en_elements.length; i++)
+            en_elements[i].style.display = "";
     }
 }
