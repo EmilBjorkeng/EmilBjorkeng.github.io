@@ -63,3 +63,11 @@ function langSwitch(lang) {
             en_elements[i].style.display = "";
     }
 }
+
+// Remove scrollbar from menu padding
+var scrollbarSize = window.innerWidth - document.body.clientWidth;
+if (scrollbarSize) {
+    let menu = document.getElementsByClassName("menu");
+    menu[0].style.paddingRight = `calc(2em - ${scrollbarSize}px)`
+    console.log(menu[0])
+}
