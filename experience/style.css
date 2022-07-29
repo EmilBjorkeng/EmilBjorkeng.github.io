@@ -32,10 +32,8 @@ html, body {
 
 .bg-img {
     position: absolute;
-    height: 105%;
-    top: -2.5%;
-    width: 105%;
-    left: -2.5%;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
     filter: brightness(60%);
