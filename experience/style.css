@@ -36,11 +36,11 @@ html, body {
     width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
-    filter: brightness(60%);
-    -webkit-filter: brightness(60%);
-    -moz-filter: brightness(60%);
-    -o-filter: brightness(60%);
-    -ms-filter: brightness(60%);
+    filter: brightness(60%) grayscale(30%);;
+    -webkit-filter: brightness(60%) grayscale(30%);;
+    -moz-filter: brightness(60%) grayscale(30%);;
+    -o-filter: brightness(60%) grayscale(30%);;
+    -ms-filter: brightness(60%) grayscale(30%);;
     z-index: -1;
     user-select: none;
 }
@@ -97,4 +97,23 @@ html, body {
 .point-left::before {
     right: -4.5rem;
     left: auto;
+}
+
+.point > * {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translate(-5%);
+    transition: all .5s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+}
+
+@media(prefers-reduced-motion) {
+    .point > * {
+        transition: none;
+    }
 }

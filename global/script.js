@@ -27,8 +27,8 @@ var nb_elements = document.getElementsByClassName("nb")
 // Set the language cookie if its not found
 let cookieLang = getCookie("lang");
 if (!cookieLang) {
-    document.cookie = "lang=en; path=/; expires=" + exporationDate;
-    cookieLang = "en"
+    document.cookie = "lang=nb; path=/; expires=" + exporationDate;
+    cookieLang = "nb"
 }
 
 // Set site to English
