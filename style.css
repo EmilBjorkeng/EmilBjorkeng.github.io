@@ -4,10 +4,13 @@ html, body {
     margin: 0;
     font-family: 'Montserrat', Helvetica, sans-serif;
     font-weight: 400;
+    background-color: #161C2BAF;
+    z-index: -2;
+    position:absolute;
 }
 
 ::selection {
-    background-color: #354366af;
+    background-color: #161C2BBF;
 }
 
 .fade-in {

@@ -4,14 +4,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Main Page</title>
-		<link rel = "icon" type = "image/png" href ="https://avatars.githubusercontent.com/u/100360572?v=4" />
-		<link rel="stylesheet" href="/style.css" type="text/css" />
-		<link rel="stylesheet" href="/global/menu.css" type="text/css" />
-		<link rel="stylesheet" href="/global/banner.css" type="text/css" />
+		<link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="/images/favicon-dark.png" />
+		<link rel="icon" type="image/png" media="(not (prefers-color-scheme: dark))" href="/images/favicon-light.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
-		<script type="text/javascript", src="/global/script.js" defer></script>
+		<link rel="stylesheet" href="/style.css" type="text/css" />
+		<link rel="stylesheet" href="/global/menu.css" type="text/css" />
+		<link rel="stylesheet" href="/banner.css" type="text/css" />
+		<script type="application/javascript", src="/global/cookies.js" defer></script>
+		<script type="application/javascript", src="/global/script.js" defer></script>
 	</head>
 	<body>
 		<!--Menu-->
@@ -20,20 +22,20 @@
 			<a href="/" class="active nb">Hjem</a>
 			<a href="/experience/" class="en">Experience</a>
 			<a href="/experience/" class="nb">Erfaring</a>
-			<a href="/portfolio/" class="en">Portfolio</a>
-			<a href="/portfolio/" class="nb">Portefølje</a>
+			<a href="/photos/" class="nb">Bilder</a>
+			<a href="/photos/" class="en">Photos</a>
 			<a href="javascript:langSwitch('nb')" class="en">NB</a>
 			<a href="javascript:langSwitch('en')" class="nb">EN</a>
 		</div>
 		<!--Banner-->
-		<div class="bnr">
+		<banner>
 			<img src="/images/DSC00198.png" alt="banner">
-			<div class="bnr-content">
+			<content>
 				<h1 class="fade-in en">Emil Bjorkeng</h1>
 				<h1 class="fade-in nb">Emil Bjørkeng</h1>
 				<span class="fade-in en">Student and freetime programmer</span>
-				<span class="fade-in nb">Student og fritids programmerer</span>				
-			</div>
-		</div>
+				<span class="fade-in nb">Student og fritids programmerer</span>
+			</content>
+		</banner>
 	</body>
 </html>
