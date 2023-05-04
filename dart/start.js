@@ -44,6 +44,24 @@ function start() {
     startScreen.style.display = 'inherit';
     dbWrapper.style.display = 'none';
     document.getElementsByClassName('new-game')[0].style.display = 'none';
+
+    // Reset Settings
+    players = [];
+    totalPoints = [];
+    currentPlayer = 0;
+
+    currentHitList = [];
+    currentHitsRaw = [];
+
+    pastHitList = [];
+    pastHitsRaw = [];
+
+    lookingAtPast = false;
+    playerHasWon = -1;
+    playerHasBusted = false;
+
+    document.getElementById('player-list').replaceChildren();
+    document.getElementById('hit-list').replaceChildren();
 }
 
 start()
