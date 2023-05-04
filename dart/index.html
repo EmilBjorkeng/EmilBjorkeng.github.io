@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Main Page</title>
+		<link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="/images/favicon-dark.png" />
+		<link rel="icon" type="image/png" media="(not (prefers-color-scheme: dark))" href="/images/favicon-light.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="dart/start.css" type="text/css" />	
+        <link rel="stylesheet" href="dart/style.css" type="text/css" />
+		<link rel="stylesheet" href="dart/board.css" type="text/css" />
+        <script type="application/javascript", src="/dart/start.js" defer></script>
+        <script type="application/javascript", src="/dart/board.js" defer></script>
+        <script type="application/javascript", src="/dart/points.js" defer></script>
+	</head>
+	<body>
+        <div id="start-screen">
+            <div class="start-wrapper">
+                <form id="add-player-form" onsubmit="return startGame();">
+                    <label for="p1name">Player name:</label>
+                    <input type="text" id="p1name" name="p1name" class="form-input"><br><br>
+                    <label for="p2name">Player name:</label>
+                    <input type="text" id="p2name" name="p2name" class="form-input"><br><br>
+                    <input type="submit" value="Start game">
+                </form>
+                <button class="add-player" onclick="addPlayer()">Add Player</button>
+            </div>
+        </div>
+        <div id="dart-board-wrapper">
+            <main id="dart-board">
+                <div id="number-list"></div>
+                <div class="dart-bg">
+                    <div id="inner-board">
+                        <div id="bullseye-ring">
+                            <div id="bullseye"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="suggestion">
+                <button id="make-it-single" onclick="editHitListMult(-1, 1)">Single</button>
+                <button id="make-it-dobble" onclick="editHitListMult(-1, 2)">Dobble</button>
+                <button id="make-it-tripple" onclick="editHitListMult(-1, 3)">Tripple</button>
+            </div>
+            <div class="point-board">
+                <button class="next-turn" onclick="nextTurn()">Next Turn</button>
+                <button class="undo-turn" onclick="undoLastTurn()">Undo Turn</button>
+                <button class="new-game" onclick="start()">New Game</button>
+                <div id="player-list"></div>
+                <ul id="hit-list">
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

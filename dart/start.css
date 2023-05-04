@@ -1,0 +1,11 @@
+.start-wrapper {
+    position: relative;
+    font-size: 1rem;
+    margin: 5em;
+}
+
+.add-player {
+    position: absolute;
+    bottom: 0;
+    transform: translate(7em, 0)
+}

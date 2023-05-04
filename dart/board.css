@@ -1,0 +1,250 @@
+#dart-board {
+    position: relative;
+    height: 50em;
+    width: 50em;
+    font-size: 1rem;
+    padding: 1em;
+    --outer-ring: #000;
+    --border-size: 0.2em;
+    --border-colour: #FFF;
+    --bullseye-ring-colour: #017E5C;
+    --bullseye-colour: #FF0000;
+    --bullseye-size: 1.8em;
+    --even-slices: #000;
+    --odd-slices: #FFF;
+    --even-dobble-field: #EF3037;
+    --odd-dobble-field: #017E5C;
+    --even-tripple-field: #EF3037;
+    --odd-tripple-field: #017E5C;
+}
+/*#dart-board:hover {
+    background-color: red;
+}*/
+
+#number-list {
+    position: absolute;
+    height: 50em;
+    width: 50em;
+}
+
+.number-wrapper {
+    position: absolute;
+    height: 49em;
+    width: 5em;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.number {
+    position: relative;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+}
+
+.dart-bg {
+    background-color: var(--outer-ring);
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+#inner-board {
+    position: absolute;
+    background-color: var(--border-colour);
+    display: inline-block;
+    height: 40em;
+    width: 40em;
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border: var(--border-size) solid var(--border-colour);
+    z-index: 2;
+}
+
+#bullseye-ring {
+    background-color: var(--bullseye-ring-colour);
+    position: absolute;
+    display: inline-block;
+    height: calc(var(--bullseye-size) * 2.2);
+    width: calc(var(--bullseye-size) * 2.2);
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: var(--border-size) solid var(--border-colour);
+    z-index: 1;
+}
+/*#bullseye-ring:hover {
+    background-color: blue;
+}*/
+
+#bullseye {
+    background-color: var(--bullseye-colour);
+    position: absolute;
+    display: inline-block;
+    height: var(--bullseye-size);
+    width: var(--bullseye-size);
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: var(--border-size) solid var(--border-colour);
+    z-index: 1;
+}
+/*#bullseye:hover {
+    background-color: blue;
+}*/
+
+.slice {
+    position: absolute;
+    height: 40em;
+    width: 6.4em;
+    background-color: black;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    clip-path: polygon(50% calc(50% - (var(--border-size) / 2) * 3), calc(var(--border-size) / 2) 0%, calc(100% - var(--border-size) / 2) 0%);
+}
+/*.slice:hover {
+    background-color: blue;
+}*/
+.even-slice {
+    background-color: var(--even-slices);
+}
+.odd-slice {
+    background-color: var(--odd-slices);
+}
+
+.dobble-field {
+    position: absolute;
+    display: inline-block;
+    height: 38em;
+    width: 38em;
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1em solid;
+    transform: translate(-16.8em);
+}
+/*.dobble-field:hover {
+    border-color: orange;
+}*/
+.even-dobble-field {
+    border-color: var(--even-dobble-field);
+}
+.odd-dobble-field {
+    border-color: var(--odd-dobble-field);
+}
+.dobble-field-click-mask {
+    position: absolute;
+    display: inline-block;
+    height: calc(38em - var(--border-size));
+    width: calc(38em - var(--border-size));
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: var(--border-size) solid var(--border-colour);
+    transform: translate(-15.8em);
+}
+
+.tripple-field {
+    position: absolute;
+    display: inline-block;
+    height: 18em;
+    width: 18em;
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1em solid;
+    transform: translate(-6.8em, 0);
+}
+/*.tripple-field:hover {
+    border-color: orange;
+}*/
+.even-tripple-field {
+    border-color: var(--even-tripple-field);
+}
+.odd-tripple-field {
+    border-color: var(--odd-tripple-field);
+}
+.tripple-field-click-mask {
+    position: absolute;
+    display: inline-block;
+    height: calc(18em - var(--border-size));
+    width: calc(18em - var(--border-size));
+    border-radius: 50%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: var(--border-size) solid var(--border-colour);
+    transform: translate(-5.7em, 0);
+}
+
+.suggestion {
+    position: absolute;
+    font-size: 1em;
+    right: 0;
+}
+
+.suggestion button {
+    position: absolute;
+    border: none;
+    font-size: 2em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+#make-it-single {
+    background-color: white;
+    color: black;
+    bottom: 2em;
+    right: 2em;
+    border: 0.1em solid black;
+    display: none;
+    cursor: pointer;
+}
+
+#make-it-dobble {
+    background-color: green;
+    color: white;
+    bottom: 2em;
+    right: 7em;
+    display: none;
+    cursor: pointer;
+}
+
+#make-it-tripple {
+    background-color: red;
+    color: white;
+    bottom: 2em;
+    right: 12em;
+    display: none;
+    cursor: pointer;
+}
