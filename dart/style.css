@@ -10,83 +10,99 @@ html, body {
 .point-board {
     position: absolute;
     display: flex;
-    font-size: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    width: 23em;
     top: 0;
-    right: 0;
+    right: 10em;
     margin: 2em;
 }
 
-.next-turn {
-    position: absolute;
-    background: #00DD00;
-    border: none;
-    border-radius: 0.4em;
-    font-size: 1.2em;
+.turn-button {
+    border: transparent;
+    color: white;
+    font-size: 0.8em;
     padding: 0.6em;
-    margin: 0;
+    margin: 0 0 0.4em 0;
+    border-radius: 0.5em;
     cursor: pointer;
+}
+
+.next-turn {
+    background-color: #00BB00;
 }
 
 .undo-turn {
-    position: absolute;
-    background: #DD0000;
-    border: none;
-    border-radius: 0.4em;
-    font-size: 1.2em;
-    padding: 0.6em;
-    margin: 0;
-    cursor: pointer;
-    transform: translate(7em, 0)
+    background-color: #BB0000;
+}
+
+.bust-button {
+    background-color: #0000BB;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
 }
 
 .new-game {
-    position: absolute;
     background: #00AA22;
-    border: none;
-    border-radius: 0.4em;
-    font-size: 1.2em;
-    padding: 0.6em;
-    margin: 0;
-    cursor: pointer;
-    transform: translate(14em, 0);
 }
 
 #player-list {
-    margin-top: 4em;
+    position: relative;
+    border: 0.02em solid black;
+    width: 100%;
 }
 
 .player {
-    width: 15em;
-    height: 2.2em;
+    display: flex;
+    width: 100%;
+    height: 1.4em;
     text-align: center;
-    font-size: 2em;
-    margin-bottom: 0.7em;
-    border: 3px solid black;
+    font-size: 1.5em;
+    border-bottom: 0.01em solid black;
+}
+
+.player:last-child {
+    border-bottom: transparent;
 }
 
 .player-focus {
-    background-color: green;
+    position: relative;
+}
+
+.player-focus::after {
+    content: '◄';
+    font-size: 0.8em;
+    position: absolute;
+    right: -1.33em;
+    top: 0.25em;
+    background-color: #BB0000;
+    color: white;
+    padding: 0 0.2em 0 0.1em;
 }
 
 .player span {
-    display: block;
+    width: 60%;
+    border: 0.05em solid black;
 }
 
 .points-left {
-    font-size: 0.7em;
-    color: grey;
+    color: white;
+    background-color: #00BB00;
+    width: 40% !important;
 }
 
 #hit-list {
+    position: absolute;
     width: 3em;
     margin: 0;
-    margin-left: 5em;
     margin-right: 2em;
     padding: 0;
     font-size: 1.4em;
     list-style: none;
     text-align: center;
     line-height: 1.5em;
+    right: -8em;
 }
 
 .hit-list-remove-button {
@@ -98,11 +114,4 @@ html, body {
     margin-left: 0.3em;
     border: none;
     cursor: pointer;
-}
-
-.bust {
-    display: inline-block !important;
-    margin-left: 1em;
-    color: #AA0000;
-    font-weight: 500;
 }

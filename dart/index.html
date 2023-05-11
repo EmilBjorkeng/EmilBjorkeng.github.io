@@ -19,7 +19,7 @@
 	<body>
         <div id="start-screen">
             <div class="start-wrapper">
-                <form id="add-player-form" onsubmit="return startGame();">
+                <form id="player-form" onsubmit="return startGame();">
                     <label for="p1name">Player name:</label>
                     <input type="text" id="p1name" name="p1name" class="form-input"><br><br>
                     <label for="p2name">Player name:</label>
@@ -27,6 +27,7 @@
                     <input type="submit" value="Start game">
                 </form>
                 <button class="add-player" onclick="addPlayer()">Add Player</button>
+                <button id="switch-players" onclick="switchPlayers()">Switch Players</button>
             </div>
         </div>
         <div id="dart-board-wrapper">
@@ -46,9 +47,11 @@
                 <button id="make-it-tripple" onclick="editHitListMult(-1, 3)">Tripple</button>
             </div>
             <div class="point-board">
-                <button class="next-turn" onclick="nextTurn()">Next Turn</button>
-                <button class="undo-turn" onclick="undoLastTurn()">Undo Turn</button>
-                <button class="new-game" onclick="start()">New Game</button>
+                <button class="turn-button next-turn" onclick="nextTurn()">Next Turn</button>
+                <!--<button class="undo-turn" onclick="undoLastTurn()">Undo Turn</button>-->
+                <button class="turn-button undo-turn" onclick="alert('Currently out of order')">Undo Turn</button>
+                <button class="turn-button bust-button" onclick="bustButton()">Bust</button>
+                <button class="turn-button new-game" onclick="start()">New Game</button>
                 <div id="player-list"></div>
                 <ul id="hit-list">
                 </ul>

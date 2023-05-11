@@ -9,7 +9,7 @@
     --border-colour: #FFF;
     --bullseye-ring-colour: #017E5C;
     --bullseye-colour: #FF0000;
-    --bullseye-size: 1.8em;
+    --bullseye-size: 1.5em;
     --even-slices: #000;
     --odd-slices: #FFF;
     --even-dobble-field: #EF3037;
@@ -75,8 +75,8 @@
     background-color: var(--bullseye-ring-colour);
     position: absolute;
     display: inline-block;
-    height: calc(var(--bullseye-size) * 2.2);
-    width: calc(var(--bullseye-size) * 2.2);
+    height: calc(var(--bullseye-size) * 2.4);
+    width: calc(var(--bullseye-size) * 2.4);
     border-radius: 50%;
     margin: auto;
     top: 0;
@@ -172,8 +172,8 @@
 .tripple-field {
     position: absolute;
     display: inline-block;
-    height: 18em;
-    width: 18em;
+    height: 20em;
+    width: 20em;
     border-radius: 50%;
     margin: auto;
     top: 0;
@@ -181,7 +181,7 @@
     left: 0;
     right: 0;
     border: 1em solid;
-    transform: translate(-6.8em, 0);
+    transform: translate(-7.8em, 0);
 }
 /*.tripple-field:hover {
     border-color: orange;
@@ -195,8 +195,8 @@
 .tripple-field-click-mask {
     position: absolute;
     display: inline-block;
-    height: calc(18em - var(--border-size));
-    width: calc(18em - var(--border-size));
+    height: calc(20em - var(--border-size));
+    width: calc(20em - var(--border-size));
     border-radius: 50%;
     margin: auto;
     top: 0;
@@ -204,7 +204,7 @@
     left: 0;
     right: 0;
     border-top: var(--border-size) solid var(--border-colour);
-    transform: translate(-5.7em, 0);
+    transform: translate(-6.7em, 0);
 }
 
 .suggestion {

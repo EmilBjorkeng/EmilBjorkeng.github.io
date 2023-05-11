@@ -9,3 +9,9 @@
     bottom: 0;
     transform: translate(7em, 0)
 }
+
+#switch-players {
+    position: absolute;
+    bottom: 0;
+    transform: translate(14em, 0)
+}

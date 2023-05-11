@@ -186,6 +186,28 @@ function undoLastTurn() {
     checkForWinAndBust()
 }
 
+function bustButton() {
+    // Return if a player has won
+    if (playerHasWon !== -1) return;
+    
+    hitList.replaceChildren();
+    currentHitList = [];    
+    currentHitsRaw = [];
+    
+    softUpdate();
+
+    // Don't save past if its a bust (not optimal but it gives so many problem if I don't)
+    pastHitList = [];
+    pastHitsRaw = [];
+        
+    // Focus
+    players[currentPlayer].className = 'player';
+    currentPlayer += 1;
+    if (currentPlayer > players.length-1) currentPlayer = 0;
+    players[currentPlayer].className = 'player player-focus';
+    suggestionButtons()
+}
+
 function addToHitList(p) {
     // Return if a player has won
     if (playerHasWon !== -1) return;
@@ -307,48 +329,10 @@ function checkForWinAndBust() {
         if (totalPoints[currentPlayer] - count <= 1) {
             console.log('Player '+currentPlayer+' just busted')
             playerHasBusted = true;
-            let span = document.createElement('span');
-            span.className = 'bust';
-            span.innerHTML = '(Bust)';
-            players[currentPlayer].children[1].appendChild(span);
+            players[currentPlayer].children[1].innerHTML = 'Busted';
         }
         else {
             playerHasBusted = false;
         }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-function createBustMarker_OLD() {
-    let span = document.createElement('span');
-    span.className = 'bust';
-    span.innerHTML = '(Bust)';
-    players[currentPlayer].children[1].appendChild(span)
-}
-
-function checkForWin_OLD() {
-    let count = 0;
-    for (let i = 0; i < hitList.childElementCount; i++) {
-        count += parseInt(hitList.children[i].children[0].innerHTML);
-    }
-    if ((totalPoints[currentPlayer] - count) === 0 && totalpoints[totalPoints.length - 1][0] == 2) {
-        playerHasWon = true;
-        suggestionButtons()
-        return true;
-    }
-    else {
-        playerHasWon = false;
-        return false;
     }
 }

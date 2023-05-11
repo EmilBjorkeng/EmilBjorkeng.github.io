@@ -1,6 +1,6 @@
 var startScreen = document.getElementById('start-screen');
 var dbWrapper = document.getElementById('dart-board-wrapper');
-var addPlayerForm = document.getElementById('add-player-form');
+var playerForm = document.getElementById('player-form');
 
 var playersAdded = 2;
 
@@ -34,10 +34,21 @@ function addPlayer() {
     let br = document.createElement('br');
     let br2 = document.createElement('br');
 
-    addPlayerForm.insertBefore(label, addPlayerForm.lastElementChild);
-    addPlayerForm.insertBefore(input, addPlayerForm.lastElementChild);
-    addPlayerForm.insertBefore(br, addPlayerForm.lastElementChild);
-    addPlayerForm.insertBefore(br2, addPlayerForm.lastElementChild);
+    playerForm.insertBefore(label, playerForm.lastElementChild);
+    playerForm.insertBefore(input, playerForm.lastElementChild);
+    playerForm.insertBefore(br, playerForm.lastElementChild);
+    playerForm.insertBefore(br2, playerForm.lastElementChild);
+
+    var switchPlayers = document.getElementById('switch-players')
+    switchPlayers.style.display = 'none';
+}
+
+function switchPlayers() {
+    var inputs = document.getElementsByClassName('form-input');
+
+    let temp = inputs[0].value
+    inputs[0].value = inputs[1].value
+    inputs[1].value = temp
 }
 
 function start() {
