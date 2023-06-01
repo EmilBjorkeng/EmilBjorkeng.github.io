@@ -1,13 +1,18 @@
-// Suggestion buttons
 var singleButton = document.getElementById('make-it-single');
 var dobbleButton = document.getElementById('make-it-dobble');
 var trippleButton = document.getElementById('make-it-tripple');
 
-// Background/miss points
+function points(e, p) {
+    e.stopPropagation();
+    if (playerHasWon !== -1) return;
+    
+    addToHitList(p)
+    suggestionButtons()
+}
+
 var bg = document.getElementById('dart-board');
 bg.addEventListener("click", (e) => { points(e, [1, 0]) }); 
 
-// Bullseye points
 var bullseyeRing = document.getElementById('bullseye-ring');
 bullseyeRing.addEventListener("click", (e) => { points(e, [1, 25]) }); 
 var bullseye = document.getElementById('bullseye');

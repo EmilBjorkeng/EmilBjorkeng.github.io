@@ -9,7 +9,7 @@ function startGame() {
     for (let i = 0; i < inputs.length; i++) {
         create_player(inputs[i].value);
     }
-    players[0].className += ' player-focus';
+    playerEntities[0].className += ' player-focus';
     
     startScreen.style.display = 'none';
     dbWrapper.style.display = 'inherit';
@@ -54,22 +54,16 @@ function switchPlayers() {
 function start() {
     startScreen.style.display = 'inherit';
     dbWrapper.style.display = 'none';
-    document.getElementsByClassName('new-game')[0].style.display = 'none';
 
     // Reset Settings
-    players = [];
-    totalPoints = [];
+    playerEntities = [];
+    playerPoints = [];
+    playerHitList = [];
+    playerStats = [];
+
     currentPlayer = 0;
-
-    currentHitList = [];
-    currentHitsRaw = [];
-
-    pastHitList = [];
-    pastHitsRaw = [];
-
-    lookingAtPast = false;
-    playerHasWon = -1;
-    playerHasBusted = false;
+    playerHasWon = false;
+    playerIsBust = false;
 
     document.getElementById('player-list').replaceChildren();
     document.getElementById('hit-list').replaceChildren();
