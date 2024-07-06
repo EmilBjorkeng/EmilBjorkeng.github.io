@@ -10,7 +10,7 @@ var currentPlayer = 0;
 var playerHasWon = false;
 var playerIsBust = false;
 
-var starting_points = 301;
+var starting_points = 501;
 
 function create_player(name) {
     // Create player
