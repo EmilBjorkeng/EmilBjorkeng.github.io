@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hexadecimal</title>
+    <link rel="icon" type=”image/svg+xml” href="/svg/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/learning/learning.css" type="text/css" />
+    <link rel="stylesheet" href="/learning/hex/style.css" type="text/css" />
+    <script type="application/javascript" src="/learning/hex/script.js" defer></script>
+</head>
+<body>
+    <div class="outside-wrapper">
+        <div class="inside-wrapper">
+            <div class="slider-container">
+                <div class="devider"></div>
+                <span>Range:</span>
+                <input type="range" min="15" max="4095" value="255" step="5" id="slider" tabindex="-1" />
+                <div class="slider-value-wrapper">
+                    <input type="text" id="slider-value" onkeypress="return isNumber(event)" tabindex="-1">
+                    <span id="slider-hex"></span>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <p id="respons"></p>
+                <p id="help"></p>
+                <h1 id="display"></h1>
+                <form action="#" id="form" autocomplete="off">
+                    <input type="text" id="input" maxlength="10" tabindex="1"><br>
+                    <input type="submit" value="Submit" id="submit" tabindex="-1" />
+                </form>
+            </div>
+            <div id="table">
+                <span>Hex</span><span>Dec</span>
+                <span>10</span><span style="text-decoration-line: underline;">16</span>
+                <span>20</span><span style="text-decoration-line: underline;">32</span>
+                <span>30</span><span>48</span>
+                <span>40</span><span style="text-decoration-line: underline;">64</span>
+                <span>50</span><span>80</span>
+                <span>60</span><span>96</span>
+                <span>70</span><span>112</span>
+                <span>80</span><span style="text-decoration-line: underline;">128</span>
+                <span>90</span><span>144</span>
+                <span>A0</span><span>160</span>
+                <span>B0</span><span>176</span>
+                <span>C0</span><span>192</span>
+                <span>D0</span><span>208</span>
+                <span>E0</span><span>224</span>
+                <span>F0</span><span>240</span>
+                <span>100</span><span style="text-decoration-line: underline;">256</span>
+                <span>200</span><span style="text-decoration-line: underline;">512</span>
+                <span>300</span><span>768</span>
+                <span>400</span><span style="text-decoration-line: underline;">1024</span>
+                <span>500</span><span>1280</span>
+                <span>600</span><span>1536</span>
+                <span>700</span><span>1792</span>
+                <span>800</span><span style="text-decoration-line: underline;">2048</span>
+                <span>900</span><span>2304</span>
+                <span>A00</span><span>2560</span>
+                <span>B00</span><span>2816</span>
+                <span>C00</span><span>3072</span>
+                <span>D00</span><span>3328</span>
+                <span>E00</span><span>3584</span>
+                <span>F00</span><span>3840</span>
+            </div>
+            <div class="checkboxes">
+                <span>Help: </span>
+                <input type="checkbox" id="help-checkbox" tabindex="-1" />
+                <span>Table: </span>
+                <input type="checkbox" id="table-checkbox" tabindex="-1" />
+                <span>Simplify: </span>
+                <input type="checkbox" id="big-num-only-checkbox" tabindex="-1" />
+                <span>Hex Only: </span>
+                <input type="checkbox" id="hex-checkbox" tabindex="-1" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

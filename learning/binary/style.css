@@ -1,0 +1,14 @@
+.content-wrapper {
+    background-color: #000;
+}
+
+#slider-value {
+    width: 12ch;
+}
+
+#indicator {
+    font-size: 0.6em;
+    position: absolute;
+    bottom: 0.3em;
+    right: 0.6em;
+}

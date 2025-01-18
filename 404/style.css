@@ -1,0 +1,29 @@
+html, body {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 400;
+    background-color: #1C1C1C;
+    color: #FFF;
+}
+
+.outside-wrapper {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.inside-wrapper {
+    display: flex;
+}
+
+.inside-wrapper h1 {
+    padding: 0.7em;
+}
+
+.inside-wrapper h1:first-child {
+    border-right: 0.1em solid #FFF;
+}

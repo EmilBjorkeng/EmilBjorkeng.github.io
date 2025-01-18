@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nato Alfabet</title>
+    <link rel="icon" type=”image/svg+xml” href="/svg/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/learning/learning.css" type="text/css" />
+    <link rel="stylesheet" href="/learning/natoalfabet/style.css" type="text/css" />
+    <script type="application/javascript" src="/learning/natoalfabet/script.js" defer></script>
+</head>
+<body>
+    <div class="outside-wrapper">
+        <div class="inside-wrapper">
+            <div class="slider-container">
+                <div class="devider"></div>
+                <span>Time limit:</span>
+                <input type="range" min="2" max="11" value="4" id="slider" tabindex="-1" />
+                <span id="slider-value"></span>
+            </div>
+            <div class="content-wrapper">
+                <span id="timer-display"></span>
+                <p id="score-count"></p>
+                <p id="respons"></p>
+                <h1 id="display"></h1>
+                <form action="#" id="form" autocomplete="off">
+                    <input type="text" id="input" maxlength="10" tabindex="1" /><br>
+                    <input type="submit" value="Submit" id="submit" tabindex="-1" />
+                </form>
+            </div>
+            <div class="checkboxes">
+                <span>Fail: </span>
+                <input type="checkbox" id="fail-checkbox" tabindex="-1" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

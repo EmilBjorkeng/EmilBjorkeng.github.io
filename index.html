@@ -3,37 +3,44 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type=”image/x-icon” href="/favicon.ico" />
 		<title>Main Page</title>
-		<link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="/images/favicon-dark.png" />
-		<link rel="icon" type="image/png" media="(not (prefers-color-scheme: dark))" href="/images/favicon-light.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="/style.css" type="text/css" />
-		<link rel="stylesheet" href="/global/menu.css" type="text/css" />
-		<link rel="stylesheet" href="/banner.css" type="text/css" />
-		<script type="application/javascript", src="/global/cookies.js" defer></script>
-		<script type="application/javascript", src="/global/script.js" defer></script>
+		<script type="application/javascript", src="/script.js" defer></script>
 	</head>
 	<body>
-		<!--Menu-->
-		<div class="menu">
-			<a href="/" class="active en">Home</a>
-			<a href="/" class="active nb">Hjem</a>
-			<a href="/experience/" class="en">Experience</a>
-			<a href="/experience/" class="nb">Erfaring</a>
-			<a href="javascript:langSwitch('nb')" class="en">NB</a>
-			<a href="javascript:langSwitch('en')" class="nb">EN</a>
+		<div class="banner">
+			<img src="/images/DSC00977.jpg" draggable="false" class="banner-img" />
+			<div class="content-wrapper">
+				<div class="content">
+					<h1 class="fade-in">Emil Bjørkeng</h1>
+					<span class="fade-in">Student og fritidsprogrammerer</span>
+				</div>
+			</div>
+			<a onClick="bannerScroll(); return false;"><img src="/svg/arrow.svg" draggable="false" class="banner-arrow" /></a>
 		</div>
-		<!--Banner-->
-		<banner>
-			<img src="/images/DSC00198.png" alt="banner">
-			<content>
-				<h1 class="fade-in en">Emil Bjorkeng</h1>
-				<h1 class="fade-in nb">Emil Bjørkeng</h1>
-				<span class="fade-in en">Student and freetime programmer</span>
-				<span class="fade-in nb">Student og fritids programmerer</span>
-			</content>
-		</banner>
+		<h1>Prosjekter</h1>
+		<div class="project">
+			<img src="/images/newTab.png" draggable="false" />
+			<span>
+				newTab is a Firefox extension that changes the appearance of the new tab page. It has a simple design with just a Firefox logo and text in the center of the screen, and a solid colour background. There is a side menu that can be accessed by clicking the settings icon in the top right corner. From the menu, you can choose from a variety of backgrounds to use as your new tab background. Just click on one of the options to set it as your background. If you want to go back to the solid colour background, simply click on the selected image again to deselect it. All the photos have credits in the bottom left corner.
+				<br><br>
+				Links: <a href="https://addons.mozilla.org/en-US/firefox/addon/emil-newtab/">Firefox Add-ons</a>
+				, <a href="https://github.com/EmilBjorkeng/newTab-browser-extention">Github</a>
+			</span>
+		</div>
+		<hr>
+		<div class="project">
+			<span>
+				My version of the classical Wolfenstein like game renderer project. It is made using SDL2 and works by shooting rays from a 2D character onto a 2D map and interpreting that in 3D.
+				<br><br>
+				Links: <a href="https://github.com/EmilBjorkeng/Wolfenstein-like-Renderer?tab=readme-ov-file">Github</a>
+			</span>
+			<img src="/images/wolfenstein-like-renderer.jpg" draggable="false" />
+		</div>
+		<div class="bottom-padding"></div>
 	</body>
 </html>
