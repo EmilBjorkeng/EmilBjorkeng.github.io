@@ -3,46 +3,39 @@ var input = document.getElementById('input');
 var displayElement = document.getElementById("display");
 var respons = document.getElementById('respons');
 var scoreCount = document.getElementById('score-count');
+var cosaButton = document.getElementById('cosa');
+var cosbButton = document.getElementById('cosb');
+var sinaButton = document.getElementById('sina');
+var sinbButton = document.getElementById('sinb');
+var tanaButton = document.getElementById('tana');
+var tanbButton = document.getElementById('tanb');
 var potensButton = document.getElementById('potens');
 
-var EquationListTemplate = {
-    "(a + b)²": "a²+2ab+b²,a^2+2ab+b^2",
-    "(a - b)²": "a²-2ab+b²,a^2-2ab+b^2",
-    "(a + b)(a - b)": "a²-b²,a^2-b^2",
-    "a² + 2ab + b²": "(a+b)²,(a+b)^2",
-    "a² - 2ab + b²": "(a-b)²,(a-b)^2",
-    "a² - b²": "(a+b)(a-b),(a-b)(a+b)",
-    "a² + 6a + 9": "(a+3)²,(a+3)^2",
-    "a² + 10a + 25": "(a+5)²,(a+5)^2",
-    "a² - 6a + 9": "(a-3)²,(a-3)^2",
-    "a² - 10a + 25": "(a-5)²,(a-5)^2",
-    "a² - 100": "(a+10)(a-10),(a-10)(a+10)",
-    "a² - 9": "(a+3)(a-3),(a-3)(a+3)",
-    "a² - 25": "(a+5)(a-5),(a-5)(a+5)"
-};
+var trigButtons = [cosaButton, cosbButton, sinaButton, sinbButton, tanaButton, tanbButton];
 
-// Change a and b into * and # to remove conflict later (Wildcards)
-var EquationList = {};
-for (const [key, value] of Object.entries(EquationListTemplate)) {
-    let newKey = key.replaceAll("a", "*").replaceAll("b", "#");
-    let newValue = value.replaceAll("a", "*").replaceAll("b", "#");
-    EquationList[newKey] = newValue;
-}
-var unknownLetterList = "abcdxy";
+var EquationList = {
+    "sin(a+b)": "sin(a)*cos(b)+sin(b)*cos(a),sina*cosb+sinb*cosa",
+    "sin(a-b)": "sin(a)*cos(b)-sin(b)*cos(a),sina*cosb-sinb*cosa",
+    "cos(a+b)": "cos(a)*cos(b)-sin(a)*sin(b),cosa*cosb-sina*sinb",
+    "cos(a-b)": "cos(a)*cos(b)+sin(a)*sin(b),cosa*cosb+sina*sinb",
+    "tan(a+b)": "tan(a)+tan(b)/1-tan(a)*tan(b),tana+tanb/1-tana*tanb",
+    "tan(a-b)": "tan(a)-tan(b)/1+tan(a)*tan(b),tana-tanb/1+tana*tanb",
+    "sin(2v)": "2*sinv*cosv,2sinv*cosv,2*sin(v)*cos(v),2sin(v)*cos(v)",
+    "cos(2v)": "cos²(v)-sin²(v),cos²v-sin²v,cos^2(v)-sin^2(v),cos^2v-sin^2v"
+};
 
 var correct = 0;
 var tries = 0;
 
 pickTimes = {};
 var currentEquation = "";
-var unknownLetters = [];
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function reset() {
-    respons.textContent = "Kvadratsettningene Tester";
+    respons.textContent = "Trigonometry Tester";
 
     correct = 0;
     tries = 0;
@@ -53,13 +46,15 @@ function reset() {
     {
         pickTimes[i] = 0;
     }
-
-    // Random unknown
-    do {
-        unknownLetters[0] = unknownLetterList[randNum(0, unknownLetterList.length)];
-        unknownLetters[1] = unknownLetterList[randNum(0, unknownLetterList.length)];
-    } while (unknownLetters[0] == unknownLetters[1]);
 }
+
+trigButtons.forEach(e => {
+    e.addEventListener("click", (e) => {
+        e.preventDefault();
+        input.value += e.target.value;
+        input.focus();
+    });
+});
 
 potensButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -75,18 +70,7 @@ form.addEventListener("submit", (e) => {
 
 function checkAwnser(inputValue) {
     tries = tries+1;
-
-    // Turn into wildcard for the list making
-    let wildCurrentEquation = currentEquation
-        .replaceAll(unknownLetters[0], "*").replaceAll(unknownLetters[1], "#");
-
-    let list = EquationList[wildCurrentEquation].split(",");
-
-    // Turn wildcards into unknowns in the list
-    for (i = 0; i < list.length; ++i) {
-        list[i] = list[i]
-            .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
-    }
+    let list = EquationList[currentEquation].split(",");
 
     // Correct
     if (list.includes(inputValue)) {
@@ -96,8 +80,8 @@ function checkAwnser(inputValue) {
 
     // Incorrect
     else {
-        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${list[0]}`
-        if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
+        if (inputValue != "") respons.innerHTML += `(not "${inputValue}")`;
     }
 
     scoreCount.textContent = `${correct}/${tries}`;
@@ -105,12 +89,6 @@ function checkAwnser(inputValue) {
 }
 
 function newEquation() {
-    // Random unknown
-    do {
-        unknownLetters[0] = unknownLetterList[randNum(0, unknownLetterList.length)];
-        unknownLetters[1] = unknownLetterList[randNum(0, unknownLetterList.length)];
-    } while (unknownLetters[0] == unknownLetters[1]);
-
     input.value = ""
 
     // Get the pick value of the lowest picked letters
@@ -129,8 +107,6 @@ function newEquation() {
 
         let keys = Object.keys(EquationList);
         nextEquation = keys[randomIndex]
-            // Turn wildcards into unknowns
-            .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
 
         // Check if the letter that was picked isn't picked way more then the lowest picked letter
         // Within the margin set

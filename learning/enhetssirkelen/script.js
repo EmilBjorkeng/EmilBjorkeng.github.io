@@ -3,46 +3,93 @@ var input = document.getElementById('input');
 var displayElement = document.getElementById("display");
 var respons = document.getElementById('respons');
 var scoreCount = document.getElementById('score-count');
-var potensButton = document.getElementById('potens');
+var piButton = document.getElementById('pi');
+var degButton = document.getElementById('deg');
+var sqrtButton = document.getElementById('sqrt');
 
-var EquationListTemplate = {
-    "(a + b)²": "a²+2ab+b²,a^2+2ab+b^2",
-    "(a - b)²": "a²-2ab+b²,a^2-2ab+b^2",
-    "(a + b)(a - b)": "a²-b²,a^2-b^2",
-    "a² + 2ab + b²": "(a+b)²,(a+b)^2",
-    "a² - 2ab + b²": "(a-b)²,(a-b)^2",
-    "a² - b²": "(a+b)(a-b),(a-b)(a+b)",
-    "a² + 6a + 9": "(a+3)²,(a+3)^2",
-    "a² + 10a + 25": "(a+5)²,(a+5)^2",
-    "a² - 6a + 9": "(a-3)²,(a-3)^2",
-    "a² - 10a + 25": "(a-5)²,(a-5)^2",
-    "a² - 100": "(a+10)(a-10),(a-10)(a+10)",
-    "a² - 9": "(a+3)(a-3),(a-3)(a+3)",
-    "a² - 25": "(a+5)(a-5),(a-5)(a+5)"
+var EquationList = {
+    // 0
+    "sin(0)": "0",
+    "cos(0)": "1",
+    "tan(0)": "0",
+    // 30°
+    "sin(30°)": "1/2,0.5",
+    "cos(30°)": "√3/2",
+    "tan(30°)": "1/√3",
+    // 45°
+    "sin(45°)": "√2/2",
+    "cos(45°)": "√2/2",
+    "tan(45°)": "1",
+    // 60°
+    "sin(60°)": "√3/2",
+    "cos(60°)": "1/2,0.5",
+    "tan(60°)": "√3",
+    // 90°
+    "sin(90°)": "1",
+    "cos(90°)": "0",
+    // 1/6 π
+    "sin(π/6)": "1/2,0.5",
+    "cos(π/6)": "√3/2",
+    "tan(π/6)": "1/√3",
+    // 1/4 π
+    "sin(π/4)": "√2/2",
+    "cos(π/4)": "√2/2",
+    "tan(π/4)": "1",
+    // 1/3 π
+    "sin(π/3)": "√3/2",
+    "cos(π/3)": "1/2,0.5",
+    "tan(π/3)": "√3",
+    // 1/2 π
+    "sin(π/2)": "1",
+    "cos(π/2)": "0",
+    // Convert d => r
+    "30°": "π/6",
+    "45°": "π/4",
+    "60°": "π/3",
+    "90°": "π/2",
+    "120°": "2π/3",
+    "135°": "3π/4",
+    "150°": "5π/6",
+    "180°": "π",
+    "210°": "7π/6",
+    "225°": "5π/4",
+    "240°": "4π/3",
+    "270°": "3π/2",
+    "300°": "5π/3",
+    "315°": "7π/4",
+    "330°": "11π/6",
+    "360°": "2π",
+    // Convert r => d
+    "π/6": "30°",
+    "π/4": "45°",
+    "π/3": "60°",
+    "π/2": "90°",
+    "2π/3": "120°",
+    "3π/4": "135°",
+    "5π/6": "150°",
+    "π": "180°",
+    "7π/6": "210°",
+    "5π/4": "225°",
+    "4π/3": "240°",
+    "3π/2": "270°",
+    "5π/3": "300°",
+    "7π/4": "315°",
+    "11π/6": "330°",
+    "2π": "360°"
 };
-
-// Change a and b into * and # to remove conflict later (Wildcards)
-var EquationList = {};
-for (const [key, value] of Object.entries(EquationListTemplate)) {
-    let newKey = key.replaceAll("a", "*").replaceAll("b", "#");
-    let newValue = value.replaceAll("a", "*").replaceAll("b", "#");
-    EquationList[newKey] = newValue;
-}
-var unknownLetterList = "abcdxy";
 
 var correct = 0;
 var tries = 0;
 
 pickTimes = {};
 var currentEquation = "";
-var unknownLetters = [];
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function reset() {
-    respons.textContent = "Kvadratsettningene Tester";
+    respons.textContent = "Enhetssirkelen Tester";
 
     correct = 0;
     tries = 0;
@@ -53,17 +100,23 @@ function reset() {
     {
         pickTimes[i] = 0;
     }
-
-    // Random unknown
-    do {
-        unknownLetters[0] = unknownLetterList[randNum(0, unknownLetterList.length)];
-        unknownLetters[1] = unknownLetterList[randNum(0, unknownLetterList.length)];
-    } while (unknownLetters[0] == unknownLetters[1]);
 }
 
-potensButton.addEventListener("click", (e) => {
+piButton.addEventListener("click", (e) => {
     e.preventDefault();
-    input.value += "²";
+    input.value += "π";
+    input.focus();
+});
+
+degButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    input.value += "°";
+    input.focus();
+});
+
+sqrtButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    input.value += "√";
     input.focus();
 });
 
@@ -75,18 +128,7 @@ form.addEventListener("submit", (e) => {
 
 function checkAwnser(inputValue) {
     tries = tries+1;
-
-    // Turn into wildcard for the list making
-    let wildCurrentEquation = currentEquation
-        .replaceAll(unknownLetters[0], "*").replaceAll(unknownLetters[1], "#");
-
-    let list = EquationList[wildCurrentEquation].split(",");
-
-    // Turn wildcards into unknowns in the list
-    for (i = 0; i < list.length; ++i) {
-        list[i] = list[i]
-            .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
-    }
+    let list = EquationList[currentEquation].split(",");
 
     // Correct
     if (list.includes(inputValue)) {
@@ -96,8 +138,8 @@ function checkAwnser(inputValue) {
 
     // Incorrect
     else {
-        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${list[0]}`
-        if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
+        if (inputValue != "") respons.innerHTML += `(not "${inputValue}")`;
     }
 
     scoreCount.textContent = `${correct}/${tries}`;
@@ -105,12 +147,6 @@ function checkAwnser(inputValue) {
 }
 
 function newEquation() {
-    // Random unknown
-    do {
-        unknownLetters[0] = unknownLetterList[randNum(0, unknownLetterList.length)];
-        unknownLetters[1] = unknownLetterList[randNum(0, unknownLetterList.length)];
-    } while (unknownLetters[0] == unknownLetters[1]);
-
     input.value = ""
 
     // Get the pick value of the lowest picked letters
@@ -129,8 +165,6 @@ function newEquation() {
 
         let keys = Object.keys(EquationList);
         nextEquation = keys[randomIndex]
-            // Turn wildcards into unknowns
-            .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
 
         // Check if the letter that was picked isn't picked way more then the lowest picked letter
         // Within the margin set

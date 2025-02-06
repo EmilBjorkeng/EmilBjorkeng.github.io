@@ -32,7 +32,7 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(80%) blur(2px);
+    filter: brightness(80%);
 }
 
 .content-wrapper {
@@ -109,6 +109,7 @@ html, body {
 h1 {
     font-size: 3rem;
     text-align: center;
+    margin: 2em;
 }
 
 .project {
@@ -129,6 +130,10 @@ h1 {
     display: inline-block;
     width: 40%;
     margin: 0 5%;
+}
+
+.project h2 {
+    margin: 0 0 2rem 0;
 }
 
 .bottom-padding {
