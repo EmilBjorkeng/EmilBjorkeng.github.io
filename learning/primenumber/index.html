@@ -16,12 +16,9 @@
     <div class="outside-wrapper">
         <div class="inside-wrapper">
             <div class="slider-container">
-                <span>Range:</span>
-                <input type="range" min="10" max="200" value="50" step="10" id="range-slider" tabindex="-1" />
-                <span id="range-slider-value"></span>
                 <div class="devider"></div>
-                <span>Time limit:</span>
-                <input type="range" min="2" max="11" value="4" id="slider" tabindex="-1" />
+                <span>Range:</span>
+                <input type="range" min="10" max="200" value="50" step="10" id="slider" tabindex="-1" />
                 <span id="slider-value"></span>
             </div>
             <div class="content-wrapper">
@@ -31,12 +28,13 @@
                 <h1 id="display"></h1>
                 <form action="#" id="form" autocomplete="off">
                     <input type="text" id="input" maxlength="10" tabindex="1" /><br>
-                    <input type="submit" value="Submit" id="submit" tabindex="-1" />
+                    <input type="button" value="Yes" id="yes" tabindex="-1" />
+                    <input type="button" value="No" id="no" tabindex="-1" />
                 </form>
             </div>
             <div class="checkboxes">
-                <span>Fail: </span>
-                <input type="checkbox" id="fail-checkbox" tabindex="-1" />
+                <span>Count: </span>
+                <input type="checkbox" id="count-checkbox" tabindex="-1" />
             </div>
         </div>
     </div>

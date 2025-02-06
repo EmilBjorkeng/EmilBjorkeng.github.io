@@ -5,6 +5,7 @@ var respons = document.getElementById('respons');
 var slider = document.getElementById('slider');
 var sliderValue = document.getElementById('slider-value');
 var indicator = document.getElementById('indicator');
+var paddingCheckbox = document.getElementById('padding-checkbox');
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -41,25 +42,25 @@ function checkAwnser(inputValue) {
     if (indicator.innerText == "B")
     {
         if (inputValue == binaryToDec(displayNum))
-            {
-                respons.innerHTML = '<span style="color:green">Correct</span>';
-            }
-            else {
-                respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${binaryToDec(displayNum)}`;
-                if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
-            }
+        {
+            respons.innerHTML = '<span style="color:green">Correct</span>';
+        }
+        else {
+            respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${binaryToDec(displayNum)}`;
+            if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+        }
     }
     // Decimal
     else
     {
         if (inputValue.toUpperCase() == decToBinary(displayNum))
-            {
-                respons.innerHTML = '<span style="color:green">Correct</span>';
-            }
-            else {
-                respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${decToBinary(displayNum)}`;
-                if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
-            }
+        {
+            respons.innerHTML = '<span style="color:green">Correct</span>';
+        }
+        else {
+            respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${decToBinary(displayNum)}`;
+            if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+        }
     }
     newNumber();
 }
@@ -73,6 +74,18 @@ function newNumber() {
     {
         number = decToBinary(number);
         indicator.innerText = "B";
+
+        if (paddingCheckbox.checked)
+        {
+            let diff = slider.value - number.length;
+            if (diff != 0)
+            {
+                for (let i = 0; i < diff; i++)
+                {
+                    number = "0" + number;
+                }
+            }
+        }
     }
 
     displayElement.innerText = number;
