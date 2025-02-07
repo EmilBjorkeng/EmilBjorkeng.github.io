@@ -37,6 +37,7 @@ form.addEventListener("submit", (e) => {
 });
 
 function checkAwnser(inputValue) {
+    inputValue = parseInt(inputValue); // Remove leading 0
     let displayNum = displayElement.innerText;
     // Binary
     if (indicator.innerText == "B")
@@ -53,7 +54,7 @@ function checkAwnser(inputValue) {
     // Decimal
     else
     {
-        if (inputValue.toUpperCase() == decToBinary(displayNum))
+        if (inputValue == decToBinary(displayNum))
         {
             respons.innerHTML = '<span style="color:green">Correct</span>';
         }

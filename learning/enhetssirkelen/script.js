@@ -6,6 +6,7 @@ var scoreCount = document.getElementById('score-count');
 var piButton = document.getElementById('pi');
 var degButton = document.getElementById('deg');
 var sqrtButton = document.getElementById('sqrt');
+var simpleCheckbox = document.getElementById('simple-checkbox');
 
 var EquationList = {
     // 0
@@ -47,42 +48,51 @@ var EquationList = {
     "45°": "π/4",
     "60°": "π/3",
     "90°": "π/2",
-    "120°": "2π/3",
-    "135°": "3π/4",
-    "150°": "5π/6",
     "180°": "π",
-    "210°": "7π/6",
-    "225°": "5π/4",
-    "240°": "4π/3",
     "270°": "3π/2",
-    "300°": "5π/3",
-    "315°": "7π/4",
-    "330°": "11π/6",
     "360°": "2π",
     // Convert r => d
     "π/6": "30°",
     "π/4": "45°",
     "π/3": "60°",
     "π/2": "90°",
+    "π": "180°",
+    "3π/2": "270°",
+    "2π": "360°",
+    // Convert d => r (complex)
+    "120°": "2π/3",
+    "135°": "3π/4",
+    "150°": "5π/6",
+    "210°": "7π/6",
+    "225°": "5π/4",
+    "240°": "4π/3",
+    "300°": "5π/3",
+    "315°": "7π/4",
+    "330°": "11π/6",
+    // Convert r => d (complex)
     "2π/3": "120°",
     "3π/4": "135°",
     "5π/6": "150°",
-    "π": "180°",
     "7π/6": "210°",
     "5π/4": "225°",
     "4π/3": "240°",
-    "3π/2": "270°",
     "5π/3": "300°",
     "7π/4": "315°",
-    "11π/6": "330°",
-    "2π": "360°"
+    "11π/6": "330°"
 };
+
+var simpleLength = Object.keys(EquationList).length - 18;
 
 var correct = 0;
 var tries = 0;
 
 pickTimes = {};
 var currentEquation = "";
+
+simpleCheckbox.addEventListener('change', () => {
+    reset();
+    newEquation();
+});
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -96,7 +106,11 @@ function reset() {
     scoreCount.textContent = `${correct}/${tries}`;
 
     pickTimes = {};
-    for (let i = 0; i < Object.keys(EquationList).length; i++)
+
+    var length = Object.keys(EquationList).length;
+    if (simpleCheckbox.checked) length = simpleLength;
+
+    for (let i = 0; i < length; i++)
     {
         pickTimes[i] = 0;
     }
@@ -159,9 +173,14 @@ function newEquation() {
     const margin = 1; // Margin for the lowest value (Higher number meaning more possibility of repeat)
     let randomIndex;
 
+    var length = Object.keys(EquationList).length;
+    if (simpleCheckbox.checked) length = simpleLength;
+
+    console.log(length)
+
     // For loop to prevent an endless loop
     for (let i = 0; i < 10000; i++) {
-        randomIndex = randNum(0, Object.keys(EquationList).length);
+        randomIndex = randNum(0, length);
 
         let keys = Object.keys(EquationList);
         nextEquation = keys[randomIndex]
