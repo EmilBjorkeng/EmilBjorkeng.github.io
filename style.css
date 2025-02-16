@@ -84,7 +84,8 @@ html, body {
 .content h1 {
     font-size: 2em;
     font-weight: 600;
-    margin-bottom: .8rem;
+    margin: 0 0 .8rem 0;
+    text-align: left;
 }
 
 .content span {
