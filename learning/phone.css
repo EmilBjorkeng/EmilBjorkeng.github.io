@@ -1,0 +1,15 @@
+.phone-outside-wrapper {
+    position: absolute;
+    width: 90%;
+    aspect-ratio: 1/1;
+    margin: auto;
+    font-size: .8rem;
+}
+
+.phone-content-wrapper {
+    padding: .5em 0;
+}
+
+.phone-respons {
+    width: 100% !important;
+}

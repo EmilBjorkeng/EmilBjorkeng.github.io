@@ -18,6 +18,7 @@ html, body {
 
 .inside-wrapper {
     display: flex;
+    flex-direction: column;
 }
 
 .content-wrapper {
@@ -81,8 +82,7 @@ html, body {
 
 .checkboxes {
     font-size: 1.2em;
-    position: absolute;
-    bottom: -2em;
+    margin-top: .5em;
 }
 
 .checkboxes input {
