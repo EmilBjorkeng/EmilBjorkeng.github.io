@@ -5,34 +5,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Binary</title>
     <link rel="icon" type=”image/svg+xml” href="/svg/favicon.svg" />
-    <link rel="icon" type=”image/svg+xml” href="/svg/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/learning/color.css" type="text/css" />
     <link rel="stylesheet" href="/learning/learning.css" type="text/css" />
-    <link rel="stylesheet" href="/learning/phone.css" type="text/css" />
     <link rel="stylesheet" href="/learning/binary/style.css" type="text/css" />
-    <script type="application/javascript" src="/learning/binary/script.js" defer></script>
-    <script type="application/javascript" src="/learning/phone.js" defer></script>
+    <script type="application/javascript", src="/learning/binary/script.js" defer></script>
 </head>
 <body>
-    <div class="outside-wrapper">
-        <div class="inside-wrapper">
-            <div class="slider-container">
-                <div class="devider"></div>
+    <div class="wrapper">
+        <div class="container" style="background-color: var(--binary);">
+            <div id="slider-container">
                 <span>Range:</span>
                 <input type="range" min="1" max="12" value="8" id="slider" tabindex="-1" />
                 <span id="slider-value"></span>
             </div>
+            <div id="score"></div>
             <div class="content-wrapper">
-                <p id="respons"></p>
-                <h1 id="display"></h1>
+                <div id="info"></div>
+                <div id="display"></div>
                 <form action="#" id="form" autocomplete="off">
-                    <input type="text" id="input" maxlength="10" tabindex="1" /><br>
+                    <input type="text" id="input" tabindex="1" /><br>
                     <input type="submit" value="Submit" id="submit" tabindex="-1" />
                 </form>
-                <span id="indicator"></span>
             </div>
+            <span id="indicator"></span>
             <div class="checkboxes">
                 <span>Padding: </span>
                 <input type="checkbox" id="padding-checkbox" tabindex="-1" checked='true' />

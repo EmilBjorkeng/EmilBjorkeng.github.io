@@ -1,8 +1,8 @@
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-var displayElement = document.getElementById("display");
-var respons = document.getElementById('respons');
-var scoreCount = document.getElementById('score-count');
+var formElement = document.getElementById('form');
+var inputElement = document.getElementById('input');
+var infoElement = document.getElementById('info');
+var displayElement = document.getElementById('display');
+var scoreElement = document.getElementById('score');
 var piButton = document.getElementById('pi');
 var degButton = document.getElementById('deg');
 var sqrtButton = document.getElementById('sqrt');
@@ -98,23 +98,11 @@ function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-function reset() {
-    respons.textContent = "Enhetssirkelen Tester";
-
-    correct = 0;
-    tries = 0;
-    scoreCount.textContent = `${correct}/${tries}`;
-
-    pickTimes = {};
-
-    var length = Object.keys(EquationList).length;
-    if (simpleCheckbox.checked) length = simpleLength;
-
-    for (let i = 0; i < length; i++)
-    {
-        pickTimes[i] = 0;
-    }
-}
+formElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let inputValue = inputElement.value.toLowerCase().replace(/\s/g, "");
+    checkAwnser(inputValue);
+});
 
 piButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -134,11 +122,23 @@ sqrtButton.addEventListener("click", (e) => {
     input.focus();
 });
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let inputValue = input.value.toLowerCase().replace(/\s/g, "");
-    checkAwnser(inputValue);
-});
+function reset() {
+    displayElement.textContent = "Enhetssirkelen Tester";
+
+    correct = 0;
+    tries = 0;
+    scoreElement.textContent = `${correct}/${tries}`;
+
+    pickTimes = {};
+
+    var length = Object.keys(EquationList).length;
+    if (simpleCheckbox.checked) length = simpleLength;
+
+    for (let i = 0; i < length; i++)
+    {
+        pickTimes[i] = 0;
+    }
+}
 
 function checkAwnser(inputValue) {
     tries = tries+1;
@@ -146,17 +146,17 @@ function checkAwnser(inputValue) {
 
     // Correct
     if (list.includes(inputValue)) {
-        respons.innerHTML = '<span style="color:green">Correct</span>';
+        infoElement.innerHTML = '<span style="color:green">Correct</span>';
         correct = correct+1;
     }
 
     // Incorrect
     else {
-        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
-        if (inputValue != "") respons.innerHTML += `(not "${inputValue}")`;
+        infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
+        if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 
-    scoreCount.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `${correct}/${tries}`;
     newEquation();
 }
 
@@ -175,8 +175,6 @@ function newEquation() {
 
     var length = Object.keys(EquationList).length;
     if (simpleCheckbox.checked) length = simpleLength;
-
-    console.log(length)
 
     // For loop to prevent an endless loop
     for (let i = 0; i < 10000; i++) {

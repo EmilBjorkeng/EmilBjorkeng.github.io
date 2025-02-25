@@ -1,0 +1,44 @@
+html, body {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    background-color: #1C1C1C;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 22rem);
+    justify-content: center;
+    gap: 6em;
+    padding: 8em;
+}
+
+a {
+    font-size: 2.5rem;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .5rem;
+    transition: scale 0.3s ease;
+}
+
+a:hover, a:focus {
+    scale: 110%;
+}
+
+@media only screen and (max-width: 400px) {
+    .wrapper {
+        grid-template-columns: repeat(auto-fill, 84dvw);
+        gap: 8dvw;
+        padding: 8dvw calc(8dvw / 2);
+    }
+
+    a:hover, a:focus  {
+        scale: 100%;
+    }
+}

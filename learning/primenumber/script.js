@@ -1,8 +1,8 @@
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-var displayElement = document.getElementById("display");
-var respons = document.getElementById('respons');
-var scoreCount = document.getElementById('score-count');
+var formElement = document.getElementById('form');
+var inputElement = document.getElementById('input');
+var infoElement = document.getElementById('info');
+var displayElement = document.getElementById('display');
+var scoreElement = document.getElementById('score');
 var slider = document.getElementById('slider');
 var sliderValue = document.getElementById('slider-value');
 var yesButton = document.getElementById('yes');
@@ -11,6 +11,16 @@ var countCheckbox = document.getElementById('count-checkbox');
 
 var correct = 0;
 var tries = 0;
+
+yes.addEventListener("click", (e) => {
+    e.preventDefault();
+    checkAwnser("yes");
+});
+
+no.addEventListener("click", (e) => {
+    e.preventDefault();
+    checkAwnser("no");
+});
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -23,13 +33,12 @@ const isPrime = num => {
     return num > 1;
 }
 
-function reset() {
-    respons.textContent = "Prime Number Tester";
-
-    correct = 0;
-    tries = 0;
-    scoreCount.textContent = `${correct}/${tries}`;
-}
+countCheckbox.addEventListener('change', () => {
+    if (countCheckbox.checked)
+        displayElement.innerText = "1";
+    else
+        displayElement.innerText = randNum(0, slider.value);
+});
 
 function sliderText() {
     sliderValue.innerText = slider.value;
@@ -37,22 +46,12 @@ function sliderText() {
 sliderText();
 slider.addEventListener("input", sliderText)
 
-yes.addEventListener("click", (e) => {
-    e.preventDefault();
-    checkAwnser("yes");
-});
-
-no.addEventListener("click", (e) => {
-    e.preventDefault();
-    checkAwnser("no");
-});
-
-countCheckbox.addEventListener('change', () => {
-    if (countCheckbox.checked)
-        displayElement.innerText = "1";
-    else
-        displayElement.innerText = randNum(0, slider.value);
-});
+function reset() {
+    infoElement.textContent = "Prime number Tester";
+    correct = 0;
+    tries = 0;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
+}
 
 function checkAwnser(inputValue) {
     tries = tries+1;
@@ -61,21 +60,20 @@ function checkAwnser(inputValue) {
 
     // Correct
     if ((inputValue == "yes" && isNumPrime) || (inputValue == "no" && !isNumPrime)) {
-        respons.innerHTML = '<span style="color:green">Correct</span>';
+        infoElement.innerHTML = '<span style="color:green">Correct</span>';
         correct = correct+1;
     }
 
     // Incorrect
     else {
-        respons.innerHTML = `<span style="color:red">Incorrect</span>`;
+        infoElement.innerHTML = `<span style="color:red">Incorrect</span>`;
     }
 
-    scoreCount.textContent = `${correct}/${tries}`;
-    newNumber();
+    scoreElement.textContent = `${correct}/${tries}`;
+    newEquation();
 }
 
-function newNumber() {
-    input.value = "";
+function newEquation() {
     if (countCheckbox.checked)
         displayElement.innerText = parseInt(displayElement.innerText)+1;
     else
@@ -84,5 +82,4 @@ function newNumber() {
 
 reset();
 if (countCheckbox.checked) displayElement.innerText = "0";
-newNumber();
-input.focus();
+newEquation();

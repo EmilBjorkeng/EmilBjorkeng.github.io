@@ -1,11 +1,20 @@
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-var displayElement = document.getElementById("display");
-var respons = document.getElementById('respons');
-var slider = document.getElementById('slider');
+var formElement = document.getElementById('form');
+var inputElement = document.getElementById('input');
+var infoElement = document.getElementById('info');
+var displayElement = document.getElementById('display');
+var scoreElement = document.getElementById('score');
 var sliderValue = document.getElementById('slider-value');
 var indicator = document.getElementById('indicator');
 var paddingCheckbox = document.getElementById('padding-checkbox');
+
+var correct = 0;
+var tries = 0;
+
+formElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let inputValue = inputElement.value.toLowerCase().replace(/\s/g, "");
+    checkAwnser(inputValue);
+});
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -19,24 +28,20 @@ function binaryToDec(binary) {
     return parseInt(binary, 2);
 }
 
-function reset() {
-    respons.textContent = "Binary Tester"
-}
-
 function sliderText() {
     sliderValue.innerText = `${slider.value} [${Math.pow(2, slider.value)}]`;
-    newNumber();
+    newEquation();
 }
 sliderText();
 slider.addEventListener("input", sliderText)
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let inputValue = input.value.toLowerCase();
-    checkAwnser(inputValue);
-});
+function reset() {
+    infoElement.textContent = "Binary Tester"
+}
 
 function checkAwnser(inputValue) {
+    tries = tries+1;
+
     inputValue = parseInt(inputValue); // Remove leading 0
     let displayNum = displayElement.innerText;
     // Binary
@@ -44,11 +49,12 @@ function checkAwnser(inputValue) {
     {
         if (inputValue == binaryToDec(displayNum))
         {
-            respons.innerHTML = '<span style="color:green">Correct</span>';
+            infoElement.innerHTML = '<span style="color:green">Correct</span>';
+            correct = correct+1;
         }
         else {
-            respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${binaryToDec(displayNum)}`;
-            if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+            infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${binaryToDec(displayNum)}`;
+            if (inputValue != "") infoElement.innerHTML += ` (not "${inputValue}")`;
         }
     }
     // Decimal
@@ -56,17 +62,22 @@ function checkAwnser(inputValue) {
     {
         if (inputValue == decToBinary(displayNum))
         {
-            respons.innerHTML = '<span style="color:green">Correct</span>';
+            infoElement.innerHTML = '<span style="color:green">Correct</span>';
+            correct = correct+1;
         }
         else {
-            respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${decToBinary(displayNum)}`;
-            if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+            infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${decToBinary(displayNum)}`;
+            if (inputValue != "") infoElement.innerHTML += ` (not "${inputValue}")`;
         }
     }
-    newNumber();
+
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
+    newEquation();
 }
 
-function newNumber() {
+function newEquation() {
+    input.value = ""
+
     input.value = "";
     let number = displayElement.innerText = randNum(0, Math.pow(2, slider.value));
     indicator.innerText = "D";

@@ -8,30 +8,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/learning/color.css" type="text/css" />
     <link rel="stylesheet" href="/learning/learning.css" type="text/css" />
-    <link rel="stylesheet" href="/learning/phone.css" type="text/css" />
-    <link rel="stylesheet" href="/learning/hex/style.css" type="text/css" />
-    <script type="application/javascript" src="/learning/hex/script.js" defer></script>
-    <script type="application/javascript" src="/learning/phone.js" defer></script>
+    <link rel="stylesheet" href="/learning/hexadecimal/style.css" type="text/css" />
+    <script type="application/javascript", src="/learning/hexadecimal/script.js" defer></script>
 </head>
 <body>
-    <div class="outside-wrapper">
-        <div class="inside-wrapper">
-            <div class="slider-container">
-                <div class="devider"></div>
+    <div class="wrapper">
+        <div class="container" style="background-color: var(--hexadecimal);">
+            <div id="slider-container">
                 <span>Range:</span>
-                <input type="range" min="15" max="4095" value="255" step="5" id="slider" tabindex="-1" />
-                <div class="slider-value-wrapper">
-                    <input type="text" id="slider-value" onkeypress="return isNumber(event)" tabindex="-1">
-                    <span id="slider-hex"></span>
-                </div>
+                <input type="range" min="15" max="4095" value="255" step="16" id="slider" tabindex="-1" />
+                <input type="text" id="slider-value" onkeypress="return isNumber(event)" tabindex="-1">
+                <span id="slider-hex"></span>
             </div>
+            <div id="score"></div>
             <div class="content-wrapper">
-                <p id="respons"></p>
-                <p id="help"></p>
-                <h1 id="display"></h1>
+                <div id="info"></div>
+                <div id="help-text"></div>
+                <div id="display"></div>
                 <form action="#" id="form" autocomplete="off">
-                    <input type="text" id="input" maxlength="10" tabindex="1"><br>
+                    <input type="text" id="input" tabindex="1" /><br>
                     <input type="submit" value="Submit" id="submit" tabindex="-1" />
                 </form>
             </div>

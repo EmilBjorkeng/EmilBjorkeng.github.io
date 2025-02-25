@@ -8,28 +8,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/learning/color.css" type="text/css" />
     <link rel="stylesheet" href="/learning/learning.css" type="text/css" />
-    <link rel="stylesheet" href="/learning/phone.css" type="text/css" />
-    <link rel="stylesheet" href="/learning/primenumber/style.css" type="text/css" />
-    <script type="application/javascript" src="/learning/primenumber/script.js" defer></script>
-    <script type="application/javascript" src="/learning/phone.js" defer></script>
+    <script type="application/javascript", src="/learning/primenumber/script.js" defer></script>
 </head>
 <body>
-    <div class="outside-wrapper">
-        <div class="inside-wrapper">
-            <div class="slider-container">
-                <div class="devider"></div>
+    <div class="wrapper">
+        <div class="container" style="background-color: var(--prime-number);">
+            <div id="slider-container">
                 <span>Range:</span>
                 <input type="range" min="10" max="200" value="50" step="10" id="slider" tabindex="-1" />
                 <span id="slider-value"></span>
             </div>
+            <div id="score"></div>
             <div class="content-wrapper">
-                <span id="timer-display"></span>
-                <p id="score-count"></p>
-                <p id="respons"></p>
-                <h1 id="display"></h1>
+                <div id="info"></div>
+                <div id="display"></div>
                 <form action="#" id="form" autocomplete="off">
-                    <input type="text" id="input" maxlength="10" tabindex="1" /><br>
                     <input type="button" value="Yes" id="yes" tabindex="-1" />
                     <input type="button" value="No" id="no" tabindex="-1" />
                 </form>

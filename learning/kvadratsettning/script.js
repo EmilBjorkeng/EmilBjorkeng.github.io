@@ -1,8 +1,8 @@
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-var displayElement = document.getElementById("display");
-var respons = document.getElementById('respons');
-var scoreCount = document.getElementById('score-count');
+var formElement = document.getElementById('form');
+var inputElement = document.getElementById('input');
+var infoElement = document.getElementById('info');
+var displayElement = document.getElementById('display');
+var scoreElement = document.getElementById('score');
 var potensButton = document.getElementById('potens');
 
 var EquationListTemplate = {
@@ -20,7 +20,6 @@ var EquationListTemplate = {
     "a² - 9": "(a+3)(a-3),(a-3)(a+3)",
     "a² - 25": "(a+5)(a-5),(a-5)(a+5)"
 };
-
 // Change a and b into * and # to remove conflict later (Wildcards)
 var EquationList = {};
 for (const [key, value] of Object.entries(EquationListTemplate)) {
@@ -32,33 +31,18 @@ var unknownLetterList = "abcdxy";
 
 var correct = 0;
 var tries = 0;
-
 pickTimes = {};
 var currentEquation = "";
 var unknownLetters = [];
 
+formElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let inputValue = inputElement.value.toLowerCase().replace(/\s/g, "");
+    checkAwnser(inputValue);
+});
+
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
-}
-
-function reset() {
-    respons.textContent = "Kvadratsettningene Tester";
-
-    correct = 0;
-    tries = 0;
-    scoreCount.textContent = `${correct}/${tries}`;
-
-    pickTimes = {};
-    for (let i = 0; i < Object.keys(EquationList).length; i++)
-    {
-        pickTimes[i] = 0;
-    }
-
-    // Random unknown
-    do {
-        unknownLetters[0] = unknownLetterList[randNum(0, unknownLetterList.length)];
-        unknownLetters[1] = unknownLetterList[randNum(0, unknownLetterList.length)];
-    } while (unknownLetters[0] == unknownLetters[1]);
 }
 
 potensButton.addEventListener("click", (e) => {
@@ -67,54 +51,61 @@ potensButton.addEventListener("click", (e) => {
     input.focus();
 });
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let inputValue = input.value.toLowerCase().replace(/\s/g, "");
-    checkAwnser(inputValue);
-});
+function reset() {
+    infoElement.textContent = "Kvadratsettningene Tester";
+    correct = 0;
+    tries = 0;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
+    pickTimes = {};
+    for (let i = 0; i < Object.keys(EquationList).length; i++)
+    {
+        pickTimes[i] = 0;
+    }
+    newEquation();
+}
 
 function checkAwnser(inputValue) {
     tries = tries+1;
 
     // Turn into wildcard for the list making
     let wildCurrentEquation = currentEquation
-        .replaceAll(unknownLetters[0], "*").replaceAll(unknownLetters[1], "#");
+    .replaceAll(unknownLetters[0], "*").replaceAll(unknownLetters[1], "#");
 
     let list = EquationList[wildCurrentEquation].split(",");
 
     // Turn wildcards into unknowns in the list
     for (i = 0; i < list.length; ++i) {
         list[i] = list[i]
-            .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
+        .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
     }
 
     // Correct
     if (list.includes(inputValue)) {
-        respons.innerHTML = '<span style="color:green">Correct</span>';
+        infoElement.innerHTML = '<span style="color:#0CAA07">Correct</span>';
         correct = correct+1;
     }
 
     // Incorrect
     else {
-        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${list[0]}`
-        if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+        infoElement.innerHTML = `<span style="color:#BF0606">Incorrect</span>, it was: ${list[0]} `
+        if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 
-    scoreCount.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
     newEquation();
 }
 
 function newEquation() {
+    input.value = ""
+
     // Random unknown
     do {
         unknownLetters[0] = unknownLetterList[randNum(0, unknownLetterList.length)];
         unknownLetters[1] = unknownLetterList[randNum(0, unknownLetterList.length)];
     } while (unknownLetters[0] == unknownLetters[1]);
 
-    input.value = ""
-
     // Get the pick value of the lowest picked letters
-    let lowestValue = 999999; // Set to arbitrary high number
+    let lowestValue = 9999; // Set to arbitrary high number
     for (const [key, value] of Object.entries(pickTimes)) {
         if (value < lowestValue) lowestValue = value;
     }
@@ -123,14 +114,13 @@ function newEquation() {
     const margin = 1; // Margin for the lowest value (Higher number meaning more possibility of repeat)
     let randomIndex;
 
-    // For loop to prevent an endless loop
-    for (let i = 0; i < 10000; i++) {
+    while (true) {
         randomIndex = randNum(0, Object.keys(EquationList).length);
 
         let keys = Object.keys(EquationList);
         nextEquation = keys[randomIndex]
-            // Turn wildcards into unknowns
-            .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
+        // Change unknown
+        .replaceAll("*", unknownLetters[0]).replaceAll("#", unknownLetters[1]);
 
         // Check if the letter that was picked isn't picked way more then the lowest picked letter
         // Within the margin set
@@ -140,12 +130,10 @@ function newEquation() {
         if (nextEquation != currentEquation) break;
     }
 
-    // Update variables
     pickTimes[randomIndex] = pickTimes[randomIndex]+1;
     currentEquation = nextEquation;
-    displayElement.textContent = currentEquation;
+    displayElement.textContent = nextEquation;
 }
 
 reset();
-newEquation();
 input.focus();

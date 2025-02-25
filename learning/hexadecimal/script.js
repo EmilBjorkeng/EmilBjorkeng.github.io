@@ -1,20 +1,26 @@
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-var displayElement = document.getElementById("display");
-var respons = document.getElementById('respons');
+var formElement = document.getElementById('form');
+var inputElement = document.getElementById('input');
+var infoElement = document.getElementById('info');
+var displayElement = document.getElementById('display');
+var scoreElement = document.getElementById('score');
 var slider = document.getElementById('slider');
 var sliderValue = document.getElementById('slider-value');
 var sliderHex = document.getElementById('slider-hex');
-var help = document.getElementById('help');
+var helpText = document.getElementById('help-text');
+var tableElement = document.getElementById('table');
 var helpCheckbox = document.getElementById('help-checkbox');
-var table = document.getElementById('table');
 var tableCheckbox = document.getElementById('table-checkbox');
 var bnoCheckbox = document.getElementById('big-num-only-checkbox');
 var hexCheckbox = document.getElementById('hex-checkbox');
 
-function randNum(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
+var correct = 0;
+var tries = 0;
+
+formElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let inputValue = inputElement.value.toLowerCase().replace(/\s/g, "");
+    checkAwnser(inputValue);
+});
 
 function isNumber(e) {
     string = e.key;
@@ -44,26 +50,39 @@ function hexToDec(hex) {
     return parseInt(hex, 16);
 }
 
-function reset() {
-    respons.textContent = "Hexadecimal Tester";
+function randNum(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function sliderText() {
     sliderValue.value = `${slider.value}`;
     sliderHex.innerText = `(0x${decToHex(slider.value)})`;
-    newNumber();
+    newEquation();
 }
 sliderText();
 slider.addEventListener("input", sliderText)
 
+sliderValue.addEventListener("focusout", (e) => {
+    sliderText();
+});
+
+sliderValue.addEventListener("keyup", (e) => {
+    let value = sliderValue.value
+    if (value < 15) value = 15;
+    if (value > 4095) value = 4095;
+    slider.value = value;
+
+    sliderHex.innerText = `(0x${decToHex(slider.value)})`
+});
+
 function helpCheckboxCheck() {
     if (helpCheckbox.checked)
     {
-        help.style.display = "inherit";
+        helpText.style.display = "block";
     }
     else
     {
-        help.style.display = "none";
+        helpText.style.display = "none";
     }
 }
 helpCheckboxCheck()
@@ -82,30 +101,20 @@ function tableCheckboxCheck() {
 tableCheckboxCheck()
 tableCheckbox.addEventListener('change', tableCheckboxCheck);
 
-bnoCheckbox.addEventListener("input", newNumber);
-hexCheckbox.addEventListener("input", newNumber);
+bnoCheckbox.addEventListener("input", newEquation);
+hexCheckbox.addEventListener("input", newEquation);
 
-sliderValue.addEventListener("keyup", (e) => {
-    let value = sliderValue.value
-    if (value < 15) value = 15;
-    if (value > 4095) value = 4095;
-    slider.value = value;
-
-    sliderHex.innerText = `(0x${decToHex(slider.value)})`
-});
-
-sliderValue.addEventListener("focusout", (e) => {
-    sliderText();
-});
-
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let inputValue = input.value.toLowerCase();
-    checkAwnser(inputValue);
-});
+function reset() {
+    infoElement.textContent = "Hexadecimal Tester";
+    correct = 0;
+    tries = 0;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
+    newEquation();
+}
 
 function checkAwnser(inputValue) {
+    tries = tries+1;
+
     let displayNum = displayElement.innerText;
     // Hex
     if (displayNum.substring(0, 2) == "0x") {
@@ -113,29 +122,32 @@ function checkAwnser(inputValue) {
 
         if (inputValue.toUpperCase() == hexToDec(displayNum))
         {
-            respons.innerHTML = '<span style="color:green">Correct</span>';
+            infoElement.innerHTML = '<span style="color:green">Correct</span>';
+            correct = correct+1;
         }
         else {
-            respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${hexToDec(displayNum)}`;
-            if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+            infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${hexToDec(displayNum)}`;
+            if (inputValue != "") infoElement.innerHTML += ` (not "${inputValue}")`;
         }
     }
     // Dec
     else {
         if (inputValue.toUpperCase() == decToHex(displayNum))
         {
-            respons.innerHTML = '<span style="color:green">Correct</span>';
+            infoElement.innerHTML = '<span style="color:green">Correct</span>';
+            correct = correct+1;
         }
         else {
-            respons.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${decToHex(displayNum)}`;
-            if (inputValue != "") respons.innerHTML += ` (not "${inputValue}")`;
+            infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${decToHex(displayNum)}`;
+            if (inputValue != "") infoElement.innerHTML += ` (not "${inputValue}")`;
         }
     }
-    newNumber();
+
+    newEquation();
 }
 
-function newNumber() {
-    input.value = "";
+function newEquation() {
+    input.value = ""
 
     // Hex to Dec
     if (randNum(0, 2) == 0 || hexCheckbox.checked) {
@@ -167,10 +179,10 @@ function newNumber() {
             n += "0";
         }
 
-        help.innerHTML = "";
+        helpText.innerHTML = "";
         for (let i = list.length-1; i >= 0; i--)
         {
-            help.innerHTML += `0x${list[i][0]} = ${list[i][1]}<br>`;
+            helpText.innerHTML += `0x${list[i][0]} = ${list[i][1]}<br>`;
         }
     }
     // Dec to Hex
@@ -203,12 +215,12 @@ function newNumber() {
             n += "0";
         }
 
-        help.innerHTML = "";
+        helpText.innerHTML = "";
         for (let i = list.length-1; i >= 0; i--)
         {
-            help.innerHTML += `${list[i][0]} = 0x${list[i][1]}<br>`;
+            helpText.innerHTML += `${list[i][0]} = 0x${list[i][1]}<br>`;
         }
-        help.innerHTML += decToHex(number);
+        helpText.innerHTML += decToHex(number);
     }
 }
 

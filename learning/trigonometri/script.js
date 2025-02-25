@@ -1,8 +1,8 @@
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-var displayElement = document.getElementById("display");
-var respons = document.getElementById('respons');
-var scoreCount = document.getElementById('score-count');
+var formElement = document.getElementById('form');
+var inputElement = document.getElementById('input');
+var infoElement = document.getElementById('info');
+var displayElement = document.getElementById('display');
+var scoreElement = document.getElementById('score');
 var cosaButton = document.getElementById('cosa');
 var cosbButton = document.getElementById('cosb');
 var sinaButton = document.getElementById('sina');
@@ -10,6 +10,7 @@ var sinbButton = document.getElementById('sinb');
 var tanaButton = document.getElementById('tana');
 var tanbButton = document.getElementById('tanb');
 var potensButton = document.getElementById('potens');
+
 
 var trigButtons = [cosaButton, cosbButton, sinaButton, sinbButton, tanaButton, tanbButton];
 
@@ -34,20 +35,6 @@ function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-function reset() {
-    respons.textContent = "Trigonometry Tester";
-
-    correct = 0;
-    tries = 0;
-    scoreCount.textContent = `${correct}/${tries}`;
-
-    pickTimes = {};
-    for (let i = 0; i < Object.keys(EquationList).length; i++)
-    {
-        pickTimes[i] = 0;
-    }
-}
-
 trigButtons.forEach(e => {
     e.addEventListener("click", (e) => {
         e.preventDefault();
@@ -68,23 +55,37 @@ form.addEventListener("submit", (e) => {
     checkAwnser(inputValue);
 });
 
+function reset() {
+    displayElement.textContent = "Trigonometri Tester";
+
+    correct = 0;
+    tries = 0;
+    scoreElement.textContent = `${correct}/${tries}`;
+
+    pickTimes = {};
+    for (let i = 0; i < Object.keys(EquationList).length; i++)
+    {
+        pickTimes[i] = 0;
+    }
+}
+
 function checkAwnser(inputValue) {
     tries = tries+1;
     let list = EquationList[currentEquation].split(",");
 
     // Correct
     if (list.includes(inputValue)) {
-        respons.innerHTML = '<span style="color:green">Correct</span>';
+        infoElement.innerHTML = '<span style="color:green">Correct</span>';
         correct = correct+1;
     }
 
     // Incorrect
     else {
-        respons.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
-        if (inputValue != "") respons.innerHTML += `(not "${inputValue}")`;
+        infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
+        if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 
-    scoreCount.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `${correct}/${tries}`;
     newEquation();
 }
 
