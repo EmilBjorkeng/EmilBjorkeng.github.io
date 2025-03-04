@@ -128,6 +128,8 @@ h1 {
 
 .project span {
     font-size: 1.5em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 200;
     display: inline-block;
     width: 40%;
     margin: 0 5%;
