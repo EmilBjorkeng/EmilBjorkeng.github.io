@@ -127,15 +127,17 @@ h1 {
 }
 
 .project span {
-    font-size: 1.5em;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Outfit', 'Montserrat', sans-serif;
     font-weight: 200;
+    font-size: 1.5em;
     display: inline-block;
     width: 40%;
     margin: 0 5%;
 }
 
 .project h2 {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 600;
     margin: 0 0 2rem 0;
 }
 
