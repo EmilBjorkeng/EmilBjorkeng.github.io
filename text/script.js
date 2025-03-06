@@ -4,8 +4,6 @@ var lower = document.getElementById('lower');
 var upper = document.getElementById('upper');
 var inverse = document.getElementById('inverse');
 var lettersOnly = document.getElementById('letters-only');
-var repeat = document.getElementById('repeat');
-var repeatNumber= document.getElementById('repeat-number');
 
 // Length display
 function lengthDisplayFunc() {
@@ -43,16 +41,4 @@ inverse.addEventListener('click', function() {
 
 lettersOnly.addEventListener('click', function() {
     input.value = input.value.replace(/[^a-zA-Z]/g, '');
-});
-
-repeat.addEventListener('click', (e) => {
-    if (repeatNumber.value === '' || isNaN(Number(repeatNumber.value)) || Number(repeatNumber.value) < 0) {
-        return;
-    }
-    input.value = input.value.repeat(Number(repeatNumber.value));
-    lengthDisplayFunc();
-});
-
-repeatNumber.addEventListener('click', (e) => {
-    e.stopPropagation();
 });
