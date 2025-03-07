@@ -1,10 +1,10 @@
-var formElement = document.getElementById('form');
-var inputElement = document.getElementById('input');
-var infoElement = document.getElementById('info');
-var displayElement = document.getElementById('display');
-var scoreElement = document.getElementById('score');
+const formElement = document.getElementById('form');
+const inputElement = document.getElementById('input');
+const infoElement = document.getElementById('info');
+const displayElement = document.getElementById('display');
+const scoreElement = document.getElementById('score');
 
-var EquationList = {
+const EquationList = {
     "a": "alfa,alpha",
     "b": "bravo",
     "c": "charlie",

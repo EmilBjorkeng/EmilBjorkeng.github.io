@@ -1,9 +1,9 @@
-var lengthDisplay = document.getElementById('length-display');
-var input = document.getElementById('text-box');
-var lower = document.getElementById('lower');
-var upper = document.getElementById('upper');
-var inverse = document.getElementById('inverse');
-var lettersOnly = document.getElementById('letters-only');
+const lengthDisplay = document.getElementById('length-display');
+const input = document.getElementById('text-box');
+const lower = document.getElementById('lower');
+const upper = document.getElementById('upper');
+const inverse = document.getElementById('inverse');
+const lettersOnly = document.getElementById('letters-only');
 
 // Length display
 function lengthDisplayFunc() {

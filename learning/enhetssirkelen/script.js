@@ -1,14 +1,14 @@
-var formElement = document.getElementById('form');
-var inputElement = document.getElementById('input');
-var infoElement = document.getElementById('info');
-var displayElement = document.getElementById('display');
-var scoreElement = document.getElementById('score');
-var piButton = document.getElementById('pi');
-var degButton = document.getElementById('deg');
-var sqrtButton = document.getElementById('sqrt');
-var simpleCheckbox = document.getElementById('simple-checkbox');
+const formElement = document.getElementById('form');
+const inputElement = document.getElementById('input');
+const infoElement = document.getElementById('info');
+const displayElement = document.getElementById('display');
+const scoreElement = document.getElementById('score');
+const piButton = document.getElementById('pi');
+const degButton = document.getElementById('deg');
+const sqrtButton = document.getElementById('sqrt');
+const simpleCheckbox = document.getElementById('simple-checkbox');
 
-var EquationList = {
+const EquationList = {
     // 0
     "sin(0)": "0",
     "cos(0)": "1",
@@ -81,7 +81,7 @@ var EquationList = {
     "11π/6": "330°"
 };
 
-var simpleLength = Object.keys(EquationList).length - 18;
+const simpleLength = Object.keys(EquationList).length - 18;
 
 var correct = 0;
 var tries = 0;
@@ -127,7 +127,7 @@ function reset() {
 
     correct = 0;
     tries = 0;
-    scoreElement.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
 
     pickTimes = {};
 
@@ -156,7 +156,7 @@ function checkAwnser(inputValue) {
         if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 
-    scoreElement.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
     newEquation();
 }
 

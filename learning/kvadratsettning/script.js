@@ -1,11 +1,11 @@
-var formElement = document.getElementById('form');
-var inputElement = document.getElementById('input');
-var infoElement = document.getElementById('info');
-var displayElement = document.getElementById('display');
-var scoreElement = document.getElementById('score');
-var potensButton = document.getElementById('potens');
+const formElement = document.getElementById('form');
+const inputElement = document.getElementById('input');
+const infoElement = document.getElementById('info');
+const displayElement = document.getElementById('display');
+const scoreElement = document.getElementById('score');
+const potensButton = document.getElementById('potens');
 
-var EquationListTemplate = {
+const EquationListTemplate = {
     "(a + b)²": "a²+2ab+b²,a^2+2ab+b^2",
     "(a - b)²": "a²-2ab+b²,a^2-2ab+b^2",
     "(a + b)(a - b)": "a²-b²,a^2-b^2",

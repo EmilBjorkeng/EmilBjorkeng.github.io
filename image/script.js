@@ -1,13 +1,9 @@
-var chooseFile = document.getElementById("choose-file");
-var imgPreview = document.getElementById("img-preview");
-var textBox = document.getElementById('text-box');
+const chooseFile = document.getElementById("choose-file");
+const imgPreview = document.getElementById("img-preview");
+const textBox = document.getElementById('text-box');
 
-chooseFile.addEventListener("change", function () {
-    getImgData();
-});
-
-function getImgData() {
-const files = chooseFile.files[0];
+chooseFile.addEventListener("change", () => {
+    const files = chooseFile.files[0];
     if (files) {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(files);
@@ -18,5 +14,5 @@ const files = chooseFile.files[0];
             textBox.value = this.result;
         });
     }
-}
+});
 textBox.value = "";

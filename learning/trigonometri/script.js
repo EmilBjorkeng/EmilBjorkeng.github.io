@@ -1,20 +1,20 @@
-var formElement = document.getElementById('form');
-var inputElement = document.getElementById('input');
-var infoElement = document.getElementById('info');
-var displayElement = document.getElementById('display');
-var scoreElement = document.getElementById('score');
-var cosaButton = document.getElementById('cosa');
-var cosbButton = document.getElementById('cosb');
-var sinaButton = document.getElementById('sina');
-var sinbButton = document.getElementById('sinb');
-var tanaButton = document.getElementById('tana');
-var tanbButton = document.getElementById('tanb');
-var potensButton = document.getElementById('potens');
+const formElement = document.getElementById('form');
+const inputElement = document.getElementById('input');
+const infoElement = document.getElementById('info');
+const displayElement = document.getElementById('display');
+const scoreElement = document.getElementById('score');
+const cosaButton = document.getElementById('cosa');
+const cosbButton = document.getElementById('cosb');
+const sinaButton = document.getElementById('sina');
+const sinbButton = document.getElementById('sinb');
+const tanaButton = document.getElementById('tana');
+const tanbButton = document.getElementById('tanb');
+const potensButton = document.getElementById('potens');
 
 
-var trigButtons = [cosaButton, cosbButton, sinaButton, sinbButton, tanaButton, tanbButton];
+const trigButtons = [cosaButton, cosbButton, sinaButton, sinbButton, tanaButton, tanbButton];
 
-var EquationList = {
+const EquationList = {
     "sin(a+b)": "sin(a)*cos(b)+sin(b)*cos(a),sina*cosb+sinb*cosa",
     "sin(a-b)": "sin(a)*cos(b)-sin(b)*cos(a),sina*cosb-sinb*cosa",
     "cos(a+b)": "cos(a)*cos(b)-sin(a)*sin(b),cosa*cosb-sina*sinb",
@@ -60,7 +60,7 @@ function reset() {
 
     correct = 0;
     tries = 0;
-    scoreElement.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
 
     pickTimes = {};
     for (let i = 0; i < Object.keys(EquationList).length; i++)
@@ -85,7 +85,7 @@ function checkAwnser(inputValue) {
         if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 
-    scoreElement.textContent = `${correct}/${tries}`;
+    scoreElement.textContent = `Score: ${correct}/${tries}`;
     newEquation();
 }
 
