@@ -75,13 +75,13 @@ function checkAwnser(inputValue) {
 
     // Correct
     if (list.includes(inputValue)) {
-        infoElement.innerHTML = '<span style="color:green">Correct</span>';
+        infoElement.innerHTML = '<span style="color:#0CAA07">Correct</span>';
         correct = correct+1;
     }
 
     // Incorrect
     else {
-        infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was:<br>${list[0]}<br>`
+        infoElement.innerHTML = `<span style="color:#BF0606">Incorrect</span>, it was:<br>${list[0]}<br>`
         if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 

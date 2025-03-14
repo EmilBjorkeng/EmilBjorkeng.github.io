@@ -5,32 +5,56 @@ const displayElement = document.getElementById('display');
 const scoreElement = document.getElementById('score');
 
 const EquationList = {
-    "a": "alfa,alpha",
-    "b": "bravo",
-    "c": "charlie",
-    "d": "delta",
-    "e": "echo",
-    "f": "foxtrot",
-    "g": "golf",
-    "h": "hotel",
-    "i": "india",
-    "j": "juliett",
-    "k": "kilo",
-    "l": "lima",
-    "m": "mike",
-    "n": "november",
-    "o": "oscar",
-    "p": "papa",
-    "q": "quebec",
-    "r": "romeo",
-    "s": "sierra",
-    "t": "tango",
-    "u": "uniform",
-    "v": "victor",
-    "w": "whiskey",
-    "x": "x-ray,xray",
-    "y": "yankee",
-    "z": "zulu"
+    "Α": "alfa",
+    "α": "alfa",
+    "Β": "beta",
+    "β": "beta",
+    "Γ": "gamma",
+    "γ": "gamma",
+    "Δ": "delta",
+    "δ": "delta",
+    "Ε": "epsilon",
+    "ε": "epsilon",
+    "Ζ": "zeta",
+    "ζ": "zeta",
+    "Η": "eta",
+    "η": "eta",
+    "Θ": "theta",
+    "θ": "theta",
+    "ϑ": "theta",
+    "Ι": "jota",
+    "ι": "jota",
+    "Κ": "kappa",
+    "κ": "kappa",
+    "Λ": "lambda",
+    "λ": "lambda",
+    "Μ": "my",
+    "μ": "my",
+    "Ν": "ny",
+    "ν": "ny",
+    "Ξ": "ksi",
+    "ξ": "ksi",
+    "Ο": "omikron",
+    "ο": "omikron",
+    "Π": "pi",
+    "π": "pi",
+    "Ρ": "rho",
+    "ρ": "rho",
+    "Σ": "sigma",
+    "σ": "sigma",
+    "ς": "sigma",
+    "Τ": "tau",
+    "τ": "tau",
+    "Υ": "ypsilon",
+    "υ": "ypsilon",
+    "Φ": "fi",
+    "φ": "fi",
+    "Χ": "xhi",
+    "χ": "xhi",
+    "Ψ": "psi",
+    "ψ": "psi",
+    "Ω": "omega",
+    "ω": "omaga"
 };
 
 var correct = 0;
@@ -43,14 +67,14 @@ function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-formElement.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let inputValue = inputElement.value.toLowerCase();
+    let inputValue = input.value.toLowerCase().replace(/\s/g, "");
     checkAwnser(inputValue);
 });
 
 function reset() {
-    infoElement.textContent = "Nato Alphabet Tester";
+    displayElement.textContent = "Gresk Alfabet Tester";
 
     correct = 0;
     tries = 0;
@@ -76,7 +100,7 @@ function checkAwnser(inputValue) {
 
     // Incorrect
     else {
-        infoElement.innerHTML = `<span style="color:#BF0606">Incorrect</span>, it was: ${list[0]} `
+        infoElement.innerHTML = `<span style="color:#BF0606">Incorrect</span>, it was:<br>${list[0]}<br>`
         if (inputValue != "") infoElement.innerHTML += `(not "${inputValue}")`;
     }
 
@@ -88,7 +112,7 @@ function newEquation() {
     input.value = ""
 
     // Get the pick value of the lowest picked letters
-    let lowestValue = 9999; // Set to arbitrary high number
+    let lowestValue = 999999; // Set to arbitrary high number
     for (const [key, value] of Object.entries(pickTimes)) {
         if (value < lowestValue) lowestValue = value;
     }
@@ -97,7 +121,8 @@ function newEquation() {
     const margin = 1; // Margin for the lowest value (Higher number meaning more possibility of repeat)
     let randomIndex;
 
-    while (true) {
+    // For loop to prevent an endless loop
+    for (let i = 0; i < 10000; i++) {
         randomIndex = randNum(0, Object.keys(EquationList).length);
 
         let keys = Object.keys(EquationList);
@@ -111,9 +136,10 @@ function newEquation() {
         if (nextEquation != currentEquation) break;
     }
 
+    // Update variables
     pickTimes[randomIndex] = pickTimes[randomIndex]+1;
     currentEquation = nextEquation;
-    displayElement.textContent = nextEquation.toUpperCase();
+    displayElement.textContent = currentEquation;
 }
 
 reset();

@@ -60,13 +60,13 @@ function checkAwnser(inputValue) {
 
     // Correct
     if ((inputValue == "yes" && isNumPrime) || (inputValue == "no" && !isNumPrime)) {
-        infoElement.innerHTML = '<span style="color:green">Correct</span>';
+        infoElement.innerHTML = '<span style="color:#0CAA07">Correct</span>';
         correct = correct+1;
     }
 
     // Incorrect
     else {
-        infoElement.innerHTML = `<span style="color:red">Incorrect</span>`;
+        infoElement.innerHTML = `<span style="color:#BF0606">Incorrect</span>`;
     }
 
     scoreElement.textContent = `${correct}/${tries}`;

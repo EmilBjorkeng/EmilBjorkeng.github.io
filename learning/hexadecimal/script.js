@@ -122,11 +122,11 @@ function checkAwnser(inputValue) {
 
         if (inputValue.toUpperCase() == hexToDec(displayNum))
         {
-            infoElement.innerHTML = '<span style="color:green">Correct</span>';
+            infoElement.innerHTML = '<span style="color:#0CAA07">Correct</span>';
             correct = correct+1;
         }
         else {
-            infoElement.innerHTML = `<span style="color:red">Incorrect</span>, it was: ${hexToDec(displayNum)}`;
+            infoElement.innerHTML = `<span style="color:#BF0606">Incorrect</span>, it was: ${hexToDec(displayNum)}`;
             if (inputValue != "") infoElement.innerHTML += ` (not "${inputValue}")`;
         }
     }
