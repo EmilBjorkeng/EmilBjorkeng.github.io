@@ -3,6 +3,8 @@ const inputElement = document.getElementById('input');
 const infoElement = document.getElementById('info');
 const displayElement = document.getElementById('display');
 const scoreElement = document.getElementById('score');
+const smallCheckbox = document.getElementById('small-checkbox');
+const bigCheckbox = document.getElementById('big-checkbox');
 
 const EquationList = {
     "Α": "alfa",
@@ -57,11 +59,77 @@ const EquationList = {
     "ω": "omaga"
 };
 
+const EquationListSmall = {
+    "α": "alfa",
+    "β": "beta",
+    "γ": "gamma",
+    "δ": "delta",
+    "ε": "epsilon",
+    "ζ": "zeta",
+    "η": "eta",
+    "θ": "theta",
+    "ϑ": "theta",
+    "ι": "jota",
+    "κ": "kappa",
+    "λ": "lambda",
+    "μ": "my",
+    "ν": "ny",
+    "ξ": "ksi",
+    "ο": "omikron",
+    "π": "pi",
+    "ρ": "rho",
+    "σ": "sigma",
+    "ς": "sigma",
+    "τ": "tau",
+    "υ": "ypsilon",
+    "φ": "fi",
+    "χ": "xhi",
+    "ψ": "psi",
+    "ω": "omaga"
+};
+
+const EquationListBig = {
+    "Α": "alfa",
+    "Β": "beta",
+    "Γ": "gamma",
+    "Δ": "delta",
+    "Ε": "epsilon",
+    "Ζ": "zeta",
+    "Η": "eta",
+    "Θ": "theta",
+    "Ι": "jota",
+    "Κ": "kappa",
+    "Λ": "lambda",
+    "Μ": "my",
+    "Ν": "ny",
+    "Ξ": "ksi",
+    "Ο": "omikron",
+    "Π": "pi",
+    "Ρ": "rho",
+    "Σ": "sigma",
+    "Τ": "tau",
+    "Υ": "ypsilon",
+    "Φ": "fi",
+    "Χ": "xhi",
+    "Ψ": "psi",
+    "Ω": "omega",
+};
+
 var correct = 0;
 var tries = 0;
 
 pickTimes = {};
 var currentEquation = "";
+
+smallCheckbox.addEventListener('change', () => {
+    bigCheckbox.checked = false;
+    reset();
+});
+
+bigCheckbox.addEventListener('change', () => {
+    smallCheckbox.checked = false;
+    reset();
+});
 
 function randNum(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -80,8 +148,15 @@ function reset() {
     tries = 0;
     scoreElement.textContent = `Score: ${correct}/${tries}`;
 
+    var list = EquationList;
+    if (smallCheckbox.checked) {
+        list = EquationListSmall;
+    } else if (bigCheckbox.checked) {
+        list = EquationListBig;
+    }
+
     pickTimes = {};
-    for (let i = 0; i < Object.keys(EquationList).length; i++)
+    for (let i = 0; i < Object.keys(list).length; i++)
     {
         pickTimes[i] = 0;
     }
@@ -111,6 +186,13 @@ function checkAwnser(inputValue) {
 function newEquation() {
     input.value = ""
 
+    var list = EquationList;
+    if (smallCheckbox.checked) {
+        list = EquationListSmall;
+    } else if (bigCheckbox.checked) {
+        list = EquationListBig;
+    }
+
     // Get the pick value of the lowest picked letters
     let lowestValue = 999999; // Set to arbitrary high number
     for (const [key, value] of Object.entries(pickTimes)) {
@@ -123,9 +205,9 @@ function newEquation() {
 
     // For loop to prevent an endless loop
     for (let i = 0; i < 10000; i++) {
-        randomIndex = randNum(0, Object.keys(EquationList).length);
+        randomIndex = randNum(0, Object.keys(list).length);
 
-        let keys = Object.keys(EquationList);
+        let keys = Object.keys(list);
         nextEquation = keys[randomIndex]
 
         // Check if the letter that was picked isn't picked way more then the lowest picked letter
