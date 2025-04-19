@@ -42,7 +42,7 @@ input.addEventListener('input', (e) => {
         if (isPrime(numbers[i])) {
             continue;
         }
-        for (let j = 2; j < numbers[i]; j++) {
+        for (let j = 2; j <= numbers[i]; j++) {
             if (numbers[i] % j == 0) {
                 factors[i].push(j);
             }
