@@ -37,13 +37,14 @@ input.addEventListener('input', (e) => {
 
     // Parsing input
     let elements = input.replace(/\s/g, "").replace(/x/g, "").replace(/\^2/g, "").replace(/²/g, "");
+    // Check for spliters next to each other
+    if (elements.match(/[=\+\-][=\+\-]/g)) {
+        awnser_display.textContent = `Error with input`;
+        return;
+    }
     elements = elements.split(/[=\+\-]/g);
     
-    let index_start = 0;
-    if (elements[0] == "") {
-        index_start = 1;
-    }
-
+    let index_start = elements.length - 3;
     a_input.value = elements[index_start+0] ? elements[index_start+0] : "1";
     b_input.value = elements[index_start+1] ? elements[index_start+1] : "1";
     c_input.value = elements[index_start+2] ? elements[index_start+2] : "1";
@@ -85,7 +86,6 @@ input.addEventListener('input', (e) => {
             c_input.value = `-${c_input.value}`;
         }
     }
-
     abc_calculate();
 });
 
@@ -96,7 +96,35 @@ abc_inputs.forEach(element => {
         let b = b_input.value ? b_input.value : 0;
         let c = c_input.value ? c_input.value : 0;
 
-        input.value = `${a}x² + ${b}x + ${c}`;
+        // Remove unecessary 1
+        if (a == 1) a = "";
+        else if (a == -1) a = "-";
+        if (b == 1) b = "";
+        else if (b == -1) b = "-";
+
+        // Remove double negative sign
+        if (b > 0) b = `+ ${b}`;
+        else if (b < 0) b = `- ${b.slice(1)}`;
+        else {
+            if (b[0] == "-") {
+                b = `- ${b.slice(1)}`;
+            }
+            else {
+                b = `+ ${b}`;
+            }
+        }
+        if (c > 0) c = `+ ${c}`;
+        else if (c > 0) c = `- ${c.slice(1)}`;
+        else {
+            if (c[0] == "-") {
+                c = `- ${c.slice(1)}`;
+            }
+            else {
+                c = `+ ${c}`;
+            }
+        }
+
+        input.value = `${a}x² ${b}x ${c}`;
         abc_calculate();
     }); 
 });
