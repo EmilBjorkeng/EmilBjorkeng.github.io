@@ -46,7 +46,10 @@ input.addEventListener('input', (e) => {
         let split = element.split("x");
         if (split.length > 1) {
             if (split[1] != "") {
-                awnser_display.textContent = `Number after x`;
+                if (isNumber(split[1]))
+                    awnser_display.textContent = `Number after x`;
+                else
+                    awnser_display.textContent = `Error with input`;
                 error = true;
             }
         }
