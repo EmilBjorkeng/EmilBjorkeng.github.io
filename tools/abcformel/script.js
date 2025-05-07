@@ -36,7 +36,25 @@ input.addEventListener('input', (e) => {
     }
 
     // Parsing input
-    let elements = input.replace(/\s/g, "").replace(/x/g, "").replace(/\^2/g, "").replace(/²/g, "");
+    let elements = input.replace(/\s/g, "");
+    
+    let error = false;
+
+    // Check for numbers after x
+    let list = elements.replace(/\^2/g, "").replace(/²/g, "").split(/[=\+\-]/g);
+    list.forEach(element => {
+        let split = element.split("x");
+        if (split.length > 1) {
+            if (split[1] != "") {
+                awnser_display.textContent = `Number after x`;
+                error = true;
+            }
+        }
+    });
+    if (error) return;
+
+    // Remove x
+    elements = elements.replace(/x/g, "").replace(/\^2/g, "").replace(/²/g, "");
     // Check for spliters next to each other
     if (elements.match(/[=\+\-][=\+\-]/g)) {
         awnser_display.textContent = `Error with input`;
@@ -49,7 +67,6 @@ input.addEventListener('input', (e) => {
     b_input.value = elements[index_start+1] ? elements[index_start+1] : "1";
     c_input.value = elements[index_start+2] ? elements[index_start+2] : "1";
 
-    // Sign list
     let signs = input.match(/[=\+\-]/g);
     if (signs.length == 3)
     {
