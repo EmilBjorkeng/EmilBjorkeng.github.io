@@ -227,8 +227,8 @@ function abc_calculate() {
     else {
         let decimal_limit = 4;
 
-        let awnser1 = (-b + Math.sqrt(root_num)) / (2 * a);
-        let awnser2 = (-b - Math.sqrt(root_num)) / (2 * a);
+        let awnser1 = (-b - Math.sqrt(root_num)) / (2 * a);
+        let awnser2 = (-b + Math.sqrt(root_num)) / (2 * a);
 
         let x1 = awnser1;
         if (x1.decimals_length() > decimal_limit) {
