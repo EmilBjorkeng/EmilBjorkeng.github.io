@@ -1,0 +1,56 @@
+html, body {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1C1C1C;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto [first] 20rem [end] auto;
+    grid-template-rows: auto [first] 2rem 2rem 1.5rem 2rem 1.5rem 1.5rem [end] auto;
+}
+
+#text {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+}
+
+#text-box {
+    grid-column: 2;
+    grid-row:3;
+}
+
+#text2 {
+    grid-column: 2;
+    grid-row: 5;
+    text-align: center;  
+}
+
+#abc-boxes {
+    grid-column: 2;
+    grid-row: 6;
+    text-align: center;
+}
+
+#abc-boxes input {
+    width: 2rem;
+    height: 1rem;
+    text-align: center;
+}
+
+#awnser-display {
+    grid-column: 2;
+    grid-row: 8;
+    text-align: center;    
+}
+
+#awnser-display span {
+    margin: 0 1rem;
+}
