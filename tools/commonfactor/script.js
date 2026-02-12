@@ -1,5 +1,6 @@
 const input = document.getElementById('text-box');
 const factorsDisplay = document.getElementById('factors-display');
+const primeDisplay = document.getElementById('prime-display');
 
 function isNumber(string) {
     if (typeof string != "string") return false;
@@ -14,32 +15,40 @@ function isPrime(number) {
     return true;
 }
 
-input.addEventListener('input', (e) => {
-    if (e.target.value == "") {
-        factorsDisplay.textContent = '';
+function computeFactors() {
+    if (input.value == "") {
+        factorsDisplay.textContent = "";
+        primeDisplay.textContent = "";
         return;
     }
 
     // Parsing
-    var numbers = e.target.value.replace(/\s/g, "").split(',');
+    var numbers = input.value.replace(/\s/g, "").split(',');
+    var primes = [];
     for (let i = 0; i < numbers.length; i++) {
         if (isNumber(numbers[i])) {
             numbers[i] = parseFloat(numbers[i]);
-        } else {
+            if (isPrime(numbers[i])) primes.push(numbers[i]);
+        }
+        else {
             numbers = "NaN";
             break;
         }
     }
+
     // Input error
     if (numbers == "NaN") {
-        factorsDisplay.textContent = `Error with input`;
+        factorsDisplay.textContent = "Error with input";
+        primeDisplay.textContent = "";
         return;
     }
+
     // Finding factors
     var factors = [];
     for (let i = 0; i < numbers.length; i++) {
         factors[i] = [1];
         if (isPrime(numbers[i])) {
+            factors[i].push(numbers[i]);
             continue;
         }
         for (let j = 2; j <= numbers[i]; j++) {
@@ -59,4 +68,30 @@ input.addEventListener('input', (e) => {
     }
 
     factorsDisplay.textContent = `${commonFactors}`;
-});
+    primeDisplay.textContent = "";
+
+    if (primes.length > 0) {
+        primes.sort((a, b) => Number(a) - Number(b));
+
+        let primeString = "";
+        for (let i = 0; i < primes.length; i++) {
+            primeString += `${primes[i]}, `
+        }
+        primeString = primeString.slice(0, -2);
+
+        // Single
+        if (primes.length == 1) {
+            primeString += " is a prime"
+        }
+        // Multiple
+        else {
+            const commaIndex = primeString.lastIndexOf(',');
+                primeString = primeString.slice(0, commaIndex) + " and" +
+                    primeString.slice(commaIndex + 1) + " are primes";
+        }
+
+        primeDisplay.textContent = primeString;
+    }
+}
+input.addEventListener('input', computeFactors);
+computeFactors();
