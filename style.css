@@ -8,10 +8,6 @@ html, body {
     color: #FFF;
 }
 
-/*::selection {
-    background-color: #161C2BBF;
-}*/
-
 .fade-in {
     animation: fadeIn 1000ms;
 }
