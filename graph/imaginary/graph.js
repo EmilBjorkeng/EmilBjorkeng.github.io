@@ -42,31 +42,30 @@ function calculateGraph(inputText, force = false) {
         }
 
         if (graphLine) {
-            graphLine.geometry.setFromPoints(points);
-            graphLine.geometry.attributes.position.needsUpdate = true;
+            scene.remove(graphLine);
+            graphLine = null;
         }
-        else {
-            const geometry = new LineGeometry();
 
-            const positions = [];
-            for (const point of points) {
-                positions.push(point.x, point.y, point.z);
-            }
-            geometry.setPositions(positions);
+        const geometry = new LineGeometry();
 
-            const material = new LineMaterial({
-                color: 0xffffff,
-                linewidth: graphWidth,
-                clippingPlanes: cutoffPlanes,
-                worldUnits: false
-            });
-
-            material.resolution.set(window.innerWidth, window.innerHeight);
-            graphLine = new Line2(geometry, material);
-            graphLine.renderOrder = 2;
-
-            scene.add(graphLine);
+        const positions = [];
+        for (const point of points) {
+            positions.push(point.x, point.y, point.z);
         }
+        geometry.setPositions(positions);
+
+        const material = new LineMaterial({
+            color: 0xffffff,
+            linewidth: graphWidth,
+            clippingPlanes: cutoffPlanes,
+            worldUnits: false
+        });
+
+        material.resolution.set(window.innerWidth, window.innerHeight);
+        graphLine = new Line2(geometry, material);
+        graphLine.renderOrder = 2;
+
+        scene.add(graphLine);
     }
     catch (error) {
         console.error('Error graphing function:', error.message);
