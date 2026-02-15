@@ -1,5 +1,5 @@
 import { rotation, position_offset, cameraState, centerDot } from './render.js';
-import { setGridVisible, setAxesVisible, setLabelVisible, setMaxLabelDistance, setXYPlaneView } from './grid.js';
+import { setGridVisible, setAxesVisible, scaleAxes, setLabelVisible, setMaxLabelDistance, setXYPlaneView } from './grid.js';
 import { calculateGraph, setGraphResolution } from './graph.js';
 import { setInputTextGetter } from './events.js';
 
@@ -10,14 +10,16 @@ document.getElementById('resetViewBtn').addEventListener('click', (e) => {
     position_offset.x = 0;
     position_offset.y = 0;
     position_offset.z = 0;
-    cameraState.distance = 10;
     setXYPlaneView(false);
+
+    cameraState.distance = 10;
+    const scaleFactor = cameraState.distance / 10;
+    scaleAxes(scaleFactor);
 });
 
 document.getElementById('xyPlaneViewBtn').addEventListener('click', (e) => {
     rotation.x = 0;
     rotation.y = 0;
-    cameraState.distance = 30;
     setXYPlaneView(true);
 });
 
