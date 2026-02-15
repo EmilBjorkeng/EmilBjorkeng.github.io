@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaginary Graph Plotter</title>
+    <link rel="stylesheet" href="/graph/imaginary/style.css" type="text/css" />
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.182.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="/graph/imaginary/main.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="controls">
+        <h3>Imaginary Graph Plotter</h3>
+        <label>
+            f(x) =
+            <input type="text" id="functionInput" name="functionInput" value="x^x" />
+        </label>
+        <label>
+            Resolution:<span id="graphResolutionValue"></span>
+            <input type="range" min="10" max="300" value="50" step="5" class="slider" id="graphResolutionSlider">
+        </label>
+        <label>
+            Label fadeout range:<span id="labelRangeValue"></span>
+            <input type="range" min="10" max="250" value="70" step="5" class="slider" id="labelRangeSlider">
+        </label>
+        <div class="checkbox-wrapper">
+            <label>
+                Grid: <input type="checkbox" id="showGridBox" checked />
+            </label>
+            <label>
+                Axes: <input type="checkbox" id="showAxesBox" checked />
+            </label>
+            <label>
+                Label: <input type="checkbox" id="showLabelsBox" checked />
+            </label>
+            <label>
+                Center Dot: <input type="checkbox" id="showCenterDotBox" />
+            </label>
+        </div>
+    </div>
+    <div id="buttons">
+        <button class="reset-view-btn" id="resetViewBtn">Reset View</button>
+        <button class="reset-view-btn" id="xyPlaneViewBtn">XY-plane</button>
+    </div>
+</body>
+</html>
