@@ -13,15 +13,19 @@ function setInputTextGetter(getter) {
     getInputText = getter;
 }
 
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+});
+
 renderer.domElement.addEventListener('mousedown', (e) => {
-    if (e.button != 0) return; // Only left mouse button
+    if (e.button != 0 && e.button != 2) return;
     isDragging = true;
-    shiftHeld = e.shiftKey;
+    shiftHeld = e.shiftKey || e.button == 2; // Shift and Right click
     previousMousePosition = { x: e.clientX, y: e.clientY };
 });
 
 renderer.domElement.addEventListener('mouseup', (e) => {
-    if (e.button != 0) return; // Only left mouse button
+    if (e.button != 0 && e.button != 2) return;
     isDragging = false;
 });
 

@@ -7,10 +7,12 @@ const gridSize = 500;
 const gridDivisions = gridSize;
 const cellSize = gridSize / gridDivisions;
 const halfGrid = gridSize / 2;
+const gridOpacity = 0.3;
 
 const axisLength = 100;
 const axisWidth = 0.01;
 let axes = [];
+const axisOpacity = 0.3;
 
 const labelSpacing = 1;
 const labelCount = gridSize / 2;
@@ -25,12 +27,16 @@ function initializeGrid(scene, cutoffPlanes) {
     // Create XZ plane grid (horizontal)
     gridHelperXZ = new THREE.GridHelper(gridSize, gridDivisions, 0x444444, 0x444444);
     gridHelperXZ.material.clippingPlanes = cutoffPlanes;
+    gridHelperXZ.material.transparent = true;
+    gridHelperXZ.material.opacity = gridOpacity;
     scene.add(gridHelperXZ);
 
     // Create XY plane grid (vertical)
     gridHelperXY = new THREE.GridHelper(gridSize, gridDivisions, 0x444444, 0x444444);
     gridHelperXY.rotation.x = Math.PI / 2;
     gridHelperXY.material.clippingPlanes = cutoffPlanes;
+    gridHelperXY.material.transparent = true;
+    gridHelperXY.material.opacity = gridOpacity;
     scene.add(gridHelperXY);
 
     // Create axes
@@ -45,7 +51,8 @@ function initializeGrid(scene, cutoffPlanes) {
             clippingPlanes: cutoffPlanes,
             depthTest: true,
             depthWrite: true,
-            transparent: false
+            transparent: true,
+            opacity: axisOpacity
         });
 
         const axis = new THREE.Mesh(geometry, material);
@@ -159,15 +166,10 @@ function updateGridLabels(position_offset, cameraDistance, cameraPosition) {
     }
     else {
         function setFont(distanceToCamera) {
-            const scaleFactor = fontSize / distanceToCamera;
-            const easedScale = Math.pow(scaleFactor, 1.2); // Shrink-rate
-            const newFontSize = Math.max(1, easedScale * fontSize);
+            const scaleFactor = 80 / Math.pow(distanceToCamera, 1.6);
+            const newFontSize = Math.min(1, Math.max(0, scaleFactor)) * fontSize;
 
-            const minSize = 8;
-            const maxSize = 24;
-            const clampedFontSize = Math.min(Math.max(newFontSize, minSize), maxSize);
-
-            return `${clampedFontSize}px`;
+            return `${newFontSize}px`;
         }
 
         // Update X-axis labels
@@ -183,6 +185,7 @@ function updateGridLabels(position_offset, cameraDistance, cameraPosition) {
             gridLabels.x[i].element.textContent = value.toString();
             gridLabels.x[i].position.set(value, 0, 0);
             gridLabels.x[i].visible = visible;
+            gridLabels.x[i].element.style.opacity = Math.max(0, 100 / Math.pow(cameraDistance, 1.8));
 
             gridLabels.x[i].element.style.fontSize = setFont(distanceToCamera);
         }
@@ -200,6 +203,7 @@ function updateGridLabels(position_offset, cameraDistance, cameraPosition) {
             gridLabels.y[i].element.textContent = value.toString();
             gridLabels.y[i].position.set(0, value, 0);
             gridLabels.y[i].visible = visible;
+            gridLabels.y[i].element.style.opacity = Math.max(0, 100 / Math.pow(cameraDistance, 1.8));
 
             gridLabels.y[i].element.style.fontSize = setFont(distanceToCamera);
         }
@@ -214,11 +218,12 @@ function updateGridLabels(position_offset, cameraDistance, cameraPosition) {
             const withinClippingBounds = Math.abs(value - position_offset.z) < halfGrid;
             const visible = distanceToCamera < maxLabelDistance && withinClippingBounds;
 
-            gridLabels.z[i].element.style.fontSize = setFont(distanceToCamera);
-
             gridLabels.z[i].element.textContent = value.toString();
             gridLabels.z[i].position.set(0, 0, value);
             gridLabels.z[i].visible = visible;
+            gridLabels.z[i].element.style.opacity = Math.max(0, 100 / Math.pow(cameraDistance, 1.8));
+
+            gridLabels.z[i].element.style.fontSize = setFont(distanceToCamera);
         }
     }
 }
