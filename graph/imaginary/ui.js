@@ -3,6 +3,30 @@ import { setGridVisible, setAxesVisible, scaleAxes, setLabelVisible, setMaxLabel
 import { calculateGraph, setGraphResolution } from './graph.js';
 import { setInputTextGetter } from './events.js';
 
+// Controls menu
+const controlsMenu = document.getElementById('controls-menu');
+const controls = document.getElementById('controls');
+
+controls.style.display = 'inherit'
+for (const elem of controlsMenu.children) {
+    elem.style.backgroundColor = 'black';
+}
+
+controlsMenu.addEventListener('click', (e) => {
+    if (controls.style.display == 'none') {
+        controls.style.display = 'inherit'
+        for (const elem of controlsMenu.children) {
+            elem.style.backgroundColor = 'black';
+        }
+    }
+    else {
+        controls.style.display = 'none'
+        for (const elem of controlsMenu.children) {
+            elem.style.backgroundColor = 'white';
+        }
+    }
+});
+
 // View buttons
 document.getElementById('resetViewBtn').addEventListener('click', (e) => {
     rotation.x = 0.5;

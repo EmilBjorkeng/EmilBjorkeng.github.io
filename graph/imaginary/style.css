@@ -50,3 +50,29 @@ input[type="range"] {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+.hamburger-menu {
+  aspect-ratio: 1/1;
+  border-radius: 2px;
+}
+
+.hamburger-menu:hover {
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 0.11em;
+    width: 1.1em;
+    background: white;
+    margin: 0.26em 0;
+    border-radius: 1em;
+}
+
+#controls-menu {
+    position: absolute;
+    font-size: 1.2rem;
+    top: 15px;
+    left: 20px;
+    z-index: 99999;
+}
