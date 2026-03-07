@@ -15,7 +15,12 @@ function csqrt(z) {
     const x = z[0], y = z[1];
     const r = Math.hypot(x,y);
     const real = Math.sqrt((r + x) / 2);
-    const imag = Math.sign(y) * Math.sqrt((r - x) / 2);
+    let imag;
+    if (y === 0) {
+        imag = x < 0 ? Math.sqrt((r - x)/2) : 0;
+    } else {
+        imag = Math.sign(y) * Math.sqrt((r - x)/2);
+    }
     return [real, imag];
 }
 
