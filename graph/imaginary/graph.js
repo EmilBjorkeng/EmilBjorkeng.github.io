@@ -37,7 +37,7 @@ function calculateGraph(inputText, force = false) {
 
         for (let x = xMin; x <= xMax; x += step) {
             const z = func(x);
-            if (!isFinite(x) || !isFinite(z[0]) || !isFinite(z[1])) continue;
+            if (!Array.isArray(z) || z.length < 2 || !isFinite(z[0]) || !isFinite(z[1])) continue;
             points.push(new THREE.Vector3(x, z[0], z[1]));
         }
 
@@ -51,6 +51,9 @@ function calculateGraph(inputText, force = false) {
         const positions = [];
         for (const point of points) {
             positions.push(point.x, point.y, point.z);
+        }
+        if (positions.length === 0 || positions.length % 3 !== 0) {
+            throw new Error('Invalid positions array');
         }
         geometry.setPositions(positions);
 

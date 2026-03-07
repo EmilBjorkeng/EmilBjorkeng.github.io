@@ -222,57 +222,53 @@ class Parser {
 }
 
 function generateCode(node) {
-    if (node.type === 'Number') {
-        return node.value;
-    }
+    if(node.type === 'Number') return `[${node.value},0]`;
+    if(node.type === 'Variable') return `[${node.name},0]`;
 
-    if (node.type === 'Variable') {
-        return node.name;
-    }
-
-    if (node.type === 'Constant') {
-        if (node.name === 'e') return 'Math.E';
-        if (node.name === 'pi') return 'Math.PI';
+    if(node.type === 'Constant'){
+        if(node.name === 'e') return `[Math.E,0]`;
+        if(node.name === 'pi') return `[Math.PI,0]`;
         throw new Error(`Unknown constant: ${node.name}`);
     }
 
-    if (node.type === 'BinaryOp') {
+    if(node.type==='BinaryOp'){
         const left = generateCode(node.left);
         const right = generateCode(node.right);
+        const opMap={
+            '+' : 'cadd',
+            '-' : 'csub',
+            '*' : 'cmul',
+            '/' : 'cdiv'
+        };
 
-        return `(${left} ${node.op} ${right})`;
+        return `${opMap[node.op]}(${left},${right})`;
     }
 
-    if (node.type === 'Power') {
+    if(node.type === 'Power'){
         const base = generateCode(node.base);
         const exponent = generateCode(node.exponent);
 
-        return `pow(${base}, ${exponent})`;
+        return `cpow(${base},${exponent})`;
     }
 
-    if (node.type === 'UnaryOp') {
+    if(node.type === 'UnaryOp'){
         const operand = generateCode(node.operand);
-        if (node.op === '-') return `(-${operand})`;
+        if(node.op === '-') return `cmul([-1,0],${operand})`;
         throw new Error(`Unknown unary operator: ${node.op}`);
     }
 
-    if (node.type === 'Function') {
-        const args = node.args.map(arg => generateCode(arg)).join(', ');
+    if(node.type==='Function'){
+        const args = node.args.map(arg => generateCode(arg)).join(',');
+        if(node.name === 'nRoot') return `cnroot(${args})`;
 
-        // Custom functions
-        if (node.name === 'sqrt' || node.name === 'nRoot') {
-            return `${node.name}(${args})`;
-        }
-
-        if (node.name === 'ln') {
-            return `Math.log(${args})`;
-        }
-
-        if (node.name === 'log') {
-            return `Math.log10(${args})`;
-        }
-
-        return `Math.${node.name}(${args})`;
+        const complexFuncs = {
+            sin:'csin', cos:'ccos', tan:'ctan',
+            sinh:'csinh', cosh:'ccosh', tanh:'ctanh',
+            sqrt:'csqrt', exp:'cexp', ln:'clog', log:'c10log',
+            abs:'cabs'
+        };
+        if(complexFuncs[node.name]) return `${complexFuncs[node.name]}(${args})`;
+        throw new Error(`Unsupported function: ${node.name}`);
     }
 
     throw new Error(`Unknown node type: ${node.type}`);
